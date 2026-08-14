@@ -1396,8 +1396,20 @@ async function syncPull(){
     }
   }catch(e){}
 }
+function syncCount(d){return ((d.tasks||[]).length+(d.goals||[]).length+(d.checkins||[]).length+(d.events||[]).length+(d.bills||[]).length+(d.memos||[]).length+(d.clothes||[]).length+(d.pomodoros||[]).length);}
 async function syncPush(){
   if(!syncEnabled())return false;
+  try{
+    const res=await fetch(SYNC_ENDPOINT+'?key='+encodeURIComponent(DB.settings.sync.key));
+    if(res.ok){
+      const j=await res.json();
+      const remote=j&&j.data;
+      if(remote&&remote.meta&&remote.meta.updatedAt){
+        const lc=syncCount(DB),rc=syncCount(remote);
+        if(rc>lc||remote.meta.updatedAt>(DB.meta.updatedAt||0)){await syncPull();return false;}
+      }
+    }
+  }catch(e){}
   const payload=JSON.parse(JSON.stringify(DB));
   payload.meta.updatedAt=Date.now();
   try{
