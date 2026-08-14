@@ -1,0 +1,3 @@
+# CC-goal-board
+
+initial
