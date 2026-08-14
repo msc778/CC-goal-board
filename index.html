@@ -159,27 +159,32 @@ textarea{resize:vertical}
 .cal-tabs button.on{background:var(--green);color:#fff;font-weight:600}
 .cal-wk{display:flex;align-items:center;justify-content:center;min-width:36px;white-space:nowrap;background:var(--card2);border:1px solid var(--line);border-radius:10px;font-size:.68rem;color:var(--muted);cursor:pointer;transition:.12s;min-height:56px;align-self:stretch}
 .cal-wk:hover{border-color:var(--green);color:var(--green);box-shadow:var(--shadow)}
-.cal-wk-tl{--hlw:64px;margin-top:4px}
-.cal-wk-days{display:flex;gap:3px}
+.cal-wk-tl{--hlw:36px;display:flex;flex-direction:column;gap:1px;background:#E3E6EA;border-radius:10px;overflow:hidden;margin-top:4px}
+.cal-wk-days{display:flex;gap:1px;background:#fff}
+.cal-wk-dates{display:flex;gap:1px;background:#fff}
 .cal-wk-sp{width:var(--hlw);flex:none}
-.cal-wk-dayhead{flex:1;min-width:0;text-align:center;font-size:.72rem;font-weight:600;color:var(--muted);padding:4px 2px;border:1px solid transparent;border-radius:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.cal-wk-dayhead.today{color:var(--green);background:#f2f8f1;border-color:var(--green)}
-.cal-wk-allrow{display:flex;gap:3px;margin-top:4px}
-.cal-wk-lbl{width:var(--hlw);flex:none;font-size:.62rem;color:var(--muted);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;user-select:none}
-.cal-wk-allcell{flex:1;min-width:0;min-height:30px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:2px;display:flex;gap:2px;overflow:hidden}
-.cal-wk-allcell .cal-chip{font-size:.6rem;padding:1px 4px;margin:0;min-width:0;border-left:2px solid rgba(255,255,255,.4)}
+.cal-wk-day{flex:1;min-width:0;text-align:center;font-size:.72rem;font-weight:600;color:var(--muted);padding:4px 2px 0}
+.cal-wk-date{flex:1;min-width:0;text-align:center;font-size:.68rem;color:var(--muted);padding:0 2px 5px}
+.cal-wk-date.today{color:var(--green);font-weight:700}
+.cal-wk-allrow{display:flex;gap:1px}
+.cal-wk-lbl{width:var(--hlw);flex:none;background:#EAF3EA;display:flex;align-items:center;justify-content:flex-end;padding-right:4px}
+.cal-wk-lbl span{font-size:.6rem;color:#6f8f77;writing-mode:vertical-rl}
+.cal-wk-allcell{flex:1;min-width:0;min-height:64px;background:#EAF3EA;padding:4px 3px;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.cal-wk-allcell.alt{background:#E2EEE2}
+.cal-wk-allcell .cal-chip{font-size:.6rem;padding:3px 4px;margin:0;width:100%;border-left:none;border-radius:4px;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cal-wk-allcell>span{font-size:.58rem;color:var(--muted);align-self:center}
-.cal-wk-grid{display:flex;gap:3px;margin-top:4px;position:relative}
-.cal-wk-labels{width:var(--hlw);flex:none}
-.cal-wk-lbl-row{height:48px;font-size:.62rem;color:var(--muted);text-align:right;padding-right:6px;padding-top:2px;user-select:none;white-space:nowrap}
-.cal-wk-col{flex:1;min-width:0;position:relative;height:1152px;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.cal-wk-col.today{border-color:var(--green);box-shadow:0 0 0 1px var(--green)}
-.cal-wk-row{position:absolute;left:0;right:0;height:48px;border-bottom:1px solid #eef2e8;cursor:pointer}
+.cal-wk-grid{display:flex;gap:1px;position:relative}
+.cal-wk-labels{width:var(--hlw);flex:none;background:#fff}
+.cal-wk-lbl-row{height:32px;font-size:.62rem;color:var(--muted);text-align:right;padding-right:4px;padding-top:2px;user-select:none;white-space:nowrap}
+.cal-wk-col{flex:1;min-width:0;position:relative;height:608px;background:#F4F5F7;overflow:hidden}
+.cal-wk-col.alt{background:#EBEDF1}
+.cal-wk-col.today{box-shadow:inset 0 0 0 1px var(--green)}
+.cal-wk-row{position:absolute;left:0;right:0;height:32px;border-bottom:1px solid rgba(0,0,0,.05);cursor:pointer}
 .cal-wk-row:hover{background:rgba(76,154,106,.05)}
-.cal-wk-col .cal-block{left:2px;right:2px;border-radius:6px;padding:1px 3px;font-size:.62rem}
+.cal-wk-col .cal-block{left:0;right:0;border-left:none;border-radius:4px;padding:1px 3px;font-size:.62rem;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;overflow:hidden}
 .cal-wk-col .cal-block b{font-size:.64rem}
 .cal-wk-col .cal-block small{display:none}
-.cal-wk-grid .cal-now{left:calc(var(--hlw) + 3px);right:0}
+.cal-wk-grid .cal-now{left:calc(var(--hlw) + 1px);right:0}
 .cal-now{position:absolute;left:6px;right:0;height:2px;background:var(--danger);z-index:6;pointer-events:none}
 .cal-now::before{content:'';position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--danger)}
 .cal-block{position:absolute;left:6px;right:6px;border-left:4px solid rgba(255,255,255,.4);background:var(--c,#4C9A6A);border-radius:8px;padding:2px 6px;font-size:.75rem;overflow:hidden;cursor:pointer;box-shadow:var(--shadow);z-index:2;color:#fff}
@@ -1295,27 +1300,30 @@ const ws=state.weekStart;
 const T=todayStr();
 const tm=t=>timeMin(t.startTime||t.endTime||'09:00');
 const offAbs=(base,m)=>base+m-360;
+const PX=32/60;
 let labs='';
-for(let r=0;r<24;r++){const h=(r+6)%24;labs+='<div class="cal-wk-lbl-row">'+((r<18?'':'次日')+pad(h)+':00')+'</div>';}
-let days='',allCells='',cols='';
+for(let r=0;r<19;r++){labs+='<div class="cal-wk-lbl-row">'+pad(r+6)+':00</div>';}
+let days='',dates='',allCells='',cols='';
 for(let i=0;i<7;i++){
 const d=addDays(ws,i);
 const ds=fmt(d);
 const nextDs=fmt(addDays(d,1));
 const isT=ds===T;
-days+='<div class="cal-wk-dayhead '+(isT?'today':'')+'">周'+WEEK_CN[d.getDay()]+' '+(d.getMonth()+1)+'/'+d.getDate()+'</div>';
+days+='<div class="cal-wk-day">'+WEEK_CN[d.getDay()]+'</div>';
+dates+='<div class="cal-wk-date'+(isT?' today':'')+'">'+(d.getMonth()+1)+'/'+d.getDate()+'</div>';
 const all=tasksOnDay(ds).filter(t=>!t.startTime&&!t.endTime).sort((a,b)=>a.priority-b.priority);
 const evs=DB.events.filter(e=>e.date===ds&&(!e.done||state.showHiddenEvents));
-const evSlot=Math.max(0,3-all.length);
-allCells+='<div class="cal-wk-allcell">'+all.slice(0,3).map(t=>'<div class="cal-chip" style="--c:'+THEME_COLOR[t.category]+'">'+esc(short(t.title))+'</div>').join('')+evs.slice(0,evSlot).map(e=>'<div class="cal-chip event" onclick="event.stopPropagation();App.editEvent(\''+e.id+'\')">'+icon('flag')+esc(short(e.title))+'</div>').join('')+(all.length>3||evs.length>evSlot?'<span>+'+(Math.max(0,all.length-3)+Math.max(0,evs.length-evSlot))+'</span>':'')+'</div>';
+const cap=4,allC=all.slice(0,cap),evC=evs.slice(0,Math.max(0,cap-allC.length));
+const more=Math.max(0,all.length-allC.length+evs.length-evC.length);
+allCells+='<div class="cal-wk-allcell'+(i%2?' alt':'')+'">'+allC.map(t=>'<div class="cal-chip" style="--c:'+THEME_COLOR[t.category]+'">'+esc(short(t.title))+'</div>').join('')+evC.map(e=>'<div class="cal-chip event" onclick="event.stopPropagation();App.editEvent(\''+e.id+'\')">'+icon('flag')+esc(short(e.title))+'</div>').join('')+(more?'<span>+'+more+'</span>':'')+'</div>';
 const timed=[...tasksOnDay(ds).filter(t=>(t.startTime||t.endTime)&&tm(t)>=360).map(t=>({t,base:0})),
 ...tasksOnDay(nextDs).filter(t=>(t.startTime||t.endTime)&&tm(t)<360).map(t=>({t,base:1440}))]
 .sort((a,b)=>offAbs(a.base,tm(a.t))-offAbs(b.base,tm(b.t)));
 let rows='',blocks='';
-for(let r=0;r<24;r++){
-const h=(r+6)%24;
+for(let r=0;r<19;r++){
+const h=r+6;
 const hd=r<18?ds:nextDs;
-rows+='<div class="cal-wk-row" style="top:'+(r*48)+'px" onclick="App.addTask({date:\''+hd+'\',time:\''+pad(h)+':00\'})"></div>';
+rows+='<div class="cal-wk-row" style="top:'+(r*32)+'px" onclick="App.addTask({date:\''+hd+'\',time:\''+pad(h%24)+':00\'})"></div>';
 }
 blocks=timed.map(e=>{
 const t=e.t,base=e.base;
@@ -1323,23 +1331,24 @@ const sm=tm(t);
 let em;
 if(!t.endTime)em=sm+60;
 else{em=timeMin(t.endTime);if(em<sm)em+=1440;if(em===sm)em=sm+60;}
-const top=offAbs(base,sm)*0.8;
-const bottom=Math.min(offAbs(base,em),1440)*0.8;
-const h=Math.max(bottom-top,18);
+const top=offAbs(base,sm)*PX;
+const bottom=Math.min(offAbs(base,em),1440)*PX;
+const h=Math.max(bottom-top,14);
 return '<div class="cal-block'+(t.status==='done'?' done':'')+'" style="--c:'+THEME_COLOR[t.category]+';top:'+top+'px;height:'+h+'px" onclick="App.editTask(\''+t.id+'\')"><b>'+esc(t.title)+'</b><small>'+esc(t.startTime||'')+(t.endTime?' ~ '+esc(t.endTime):'')+'</small></div>';
 }).join('');
-cols+='<div class="cal-wk-col '+(isT?'today':'')+'">'+rows+blocks+'</div>';
+cols+='<div class="cal-wk-col'+(isT?' today':'')+(i%2?' alt':'')+'">'+rows+blocks+'</div>';
 }
 let now='';
 const nd=new Date();
 const mn=nd.getHours()*60+nd.getMinutes();
 const wS=fmt(ws),wE=fmt(addDays(ws,6));
-if(mn>=360){if(T>=wS&&T<=wE)now='<div class="cal-now" style="top:'+((mn-360)*0.8)+'px"></div>';}
-else{const yest=fmt(addDays(new Date(),-1));if(yest>=wS&&yest<=wE)now='<div class="cal-now" style="top:'+((1440+mn-360)*0.8)+'px"></div>';}
+if(mn>=360){if(T>=wS&&T<=wE)now='<div class="cal-now" style="top:'+((mn-360)*PX)+'px"></div>';}
+else{const yest=fmt(addDays(new Date(),-1));if(yest>=wS&&yest<=wE)now='<div class="cal-now" style="top:'+((1440+mn-360)*PX)+'px"></div>';}
 return '<section class="card">'+calHead(fmt(ws)+' ~ '+fmt(addDays(ws,6)))+
 '<div class="cal-wk-tl">'+
 '<div class="cal-wk-days"><div class="cal-wk-sp"></div>'+days+'</div>'+
-'<div class="cal-wk-allrow"><div class="cal-wk-lbl">不定时</div>'+allCells+'</div>'+
+'<div class="cal-wk-dates"><div class="cal-wk-sp"></div>'+dates+'</div>'+
+'<div class="cal-wk-allrow"><div class="cal-wk-lbl"><span>全天</span></div>'+allCells+'</div>'+
 '<div class="cal-wk-grid"><div class="cal-wk-labels">'+labs+'</div>'+cols+now+'</div>'+
 '</div></section>';
 }
