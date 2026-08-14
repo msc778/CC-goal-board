@@ -121,4 +121,4 @@ await api('/git/refs', {
 
 console.log('OK 已推送到 https://github.com/' + REPO);
 console.log('commit: ' + commit.sha.slice(0, 12) + '  files: ' + changed + '  msg: ' + msg);
-console.log('Netlify 正在自动构建，约 1 分钟后生效：https://lifelong-goal-board.netlify.app');
+console.log('Netlify 正在自动构建，约 1 分钟后生效：https://marvelous-otter-b1e338.netlify.app');
