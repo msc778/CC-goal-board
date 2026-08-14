@@ -492,12 +492,19 @@ function defaultSettings(){return {autoDefer:true,budget:{},expCats:EXP_CATS.sli
 ],kw:KW,sync:{enabled:false,key:'',lastSyncAt:null,serverUpdatedAt:0},holidays:['2026-01-01','2026-01-02','2026-01-03','2026-02-15','2026-02-16','2026-02-17','2026-02-18','2026-02-19','2026-02-20','2026-02-21','2026-02-22','2026-02-23','2026-04-04','2026-04-05','2026-04-06','2026-05-01','2026-05-02','2026-05-03','2026-05-04','2026-05-05','2026-06-19','2026-06-20','2026-06-21','2026-09-25','2026-09-26','2026-09-27','2026-10-01','2026-10-02','2026-10-03','2026-10-04','2026-10-05','2026-10-06','2026-10-07']};}
 function emptyState(){
 const T=todayStr();
-return {goals:[],tasks:[],checkins:[],events:[],pomodoros:[],ledgers:[{id:'main',name:'默认账本',currency:'CNY',isDefault:true,createdAt:Date.now()}],bills:[],memos:[],clothes:[],settings:defaultSettings(),meta:{createdAt:Date.now(),updatedAt:Date.now(),lastAutoDeferDate:T}};
+return {goals:[],tasks:[],checkins:[],events:[],pomodoros:[],ledgers:[{id:'main',name:'默认账本',currency:'CNY',isDefault:true,createdAt:Date.now()}],bills:[],memos:[],clothes:[],deleted:{},settings:defaultSettings(),meta:{createdAt:Date.now(),updatedAt:Date.now(),lastAutoDeferDate:T}};
+}
+function normDeleted(del){
+  const cols=['goals','tasks','checkins','events','pomodoros','ledgers','bills','memos','clothes','rewards'];
+  const out={};
+  if(del&&typeof del==='object'){for(const col of cols){const m=del[col];if(m&&typeof m==='object'){const o={};for(const id of Object.keys(m)){const v=Number(m[id]);if(v>0)o[id]=v;}if(Object.keys(o).length)out[col]=o;}}}
+  return out;
 }
 function migrate(raw){
 const d=(raw&&typeof raw==='object')?raw:{};
 const out={
 schemaVersion:1,
+deleted:normDeleted(d.deleted),
 goals:(Array.isArray(d.goals)?d.goals:[]).map(g=>({
 id:g.id||uid(),title:String(g.title||'未命名目标'),desc:String(g.desc||''),theme:THEMES.includes(g.theme)?g.theme:'学习',
 unit:String(g.unit||'次'),target:Number(g.target)||1,current:Number(g.current)||0,
@@ -543,6 +550,7 @@ if(!out.settings.expCats.length)out.settings.expCats=EXP_CATS.slice();
 return out;
 }
 function save(){DB.meta.updatedAt=Date.now();try{localStorage.setItem(LS_KEY,JSON.stringify(DB));}catch(e){showToast('保存失败：本地存储空间不足');}scheduleSyncPush();}
+function tombstone(col,id){if(!id)return;DB.deleted=DB.deleted||{};DB.deleted[col]=DB.deleted[col]||{};DB.deleted[col][id]=Date.now();}
 function saveUI(){try{localStorage.setItem(UI_KEY,JSON.stringify({tab:state.tab,calY:state.calY,calM:state.calM,calView:state.calView,weekStart:fmt(state.weekStart),showHiddenEvents:!!state.showHiddenEvents,moneyLedger:state.moneyLedger||null,memoSub:state.memoSub,weekSub:state.weekSub,monthYM:state.monthYM||null,weekLedger:state.weekLedger||null}));}catch(e){}}
 function restoreUI(){
 try{
@@ -1378,54 +1386,34 @@ let syncTimer=null;
 function syncEnabled(){return !!(DB.settings.sync&&DB.settings.sync.enabled&&DB.settings.sync.key);}
 function syncSet(partial){DB.settings.sync=Object.assign({enabled:false,key:'',lastSyncAt:null,serverUpdatedAt:0},DB.settings.sync||{},partial);}
 function scheduleSyncPush(){if(!syncEnabled())return;clearTimeout(syncTimer);syncTimer=setTimeout(()=>{syncPush().catch(()=>{});},1500);}
-async function syncPull(){
-  if(!syncEnabled())return;
-  try{
-    const res=await fetch(SYNC_ENDPOINT+'?key='+encodeURIComponent(DB.settings.sync.key));
-    if(!res.ok)return;
-    const j=await res.json();
-    const remote=j&&j.data;
-    if(remote&&remote.meta&&(remote.meta.updatedAt||0)>(DB.meta.updatedAt||0)){
-      DB=migrate(remote);
-      DB.meta.updatedAt=Date.now();
-      save();
-      render();
-      showToast('已从云端拉取最新数据');
-    }else if(!remote){
-      await syncPush();
-    }
-  }catch(e){}
-}
-function syncCount(d){return ((d.tasks||[]).length+(d.goals||[]).length+(d.checkins||[]).length+(d.events||[]).length+(d.bills||[]).length+(d.memos||[]).length+(d.clothes||[]).length+(d.pomodoros||[]).length);}
 async function syncPush(){
   if(!syncEnabled())return false;
-  try{
-    const res=await fetch(SYNC_ENDPOINT+'?key='+encodeURIComponent(DB.settings.sync.key));
-    if(res.ok){
-      const j=await res.json();
-      const remote=j&&j.data;
-      if(remote&&remote.meta&&remote.meta.updatedAt){
-        const lc=syncCount(DB),rc=syncCount(remote);
-        if(rc>lc||remote.meta.updatedAt>(DB.meta.updatedAt||0)){await syncPull();return false;}
-      }
-    }
-  }catch(e){}
   const payload=JSON.parse(JSON.stringify(DB));
-  payload.meta.updatedAt=Date.now();
   try{
     const res=await fetch(SYNC_ENDPOINT+'?key='+encodeURIComponent(DB.settings.sync.key),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
     if(!res.ok)return false;
-    syncSet({lastSyncAt:Date.now(),serverUpdatedAt:payload.meta.updatedAt});
+    const j=await res.json();
+    const merged=j&&j.data;
+    if(!merged||!merged.meta)return false;
+    const before=syncSig(DB);
+    const now=Date.now();
+    DB=migrate(merged);
+    DB.meta.updatedAt=now;
+    const changed=syncSig(DB)!==before;
+    syncSet({lastSyncAt:now,serverUpdatedAt:merged.meta.updatedAt||0});
     localStorage.setItem(LS_KEY,JSON.stringify(DB));
+    if(changed){render();showToast('已与云端合并，拉到最新数据');}
     return true;
   }catch(e){return false;}
 }
+function syncSig(d){
+  const s=d.settings||{};
+  return JSON.stringify([d.goals,d.tasks,d.checkins,d.events,d.pomodoros,d.ledgers,d.bills,d.memos,d.clothes,d.deleted,s.rewards,s.kw,s.expCats,s.holidays,s.budget,s.autoDefer]);
+}
 async function syncNow(){
   if(!syncEnabled()){showToast('请先开启云同步并填写同步密码');return;}
-  const before=DB.meta.updatedAt||0;
-  await syncPull();
-  if((DB.meta.updatedAt||0)===before){await syncPush();}
-  showToast('同步完成，上次同步 '+((DB.settings.sync.lastSyncAt)?new Date(DB.settings.sync.lastSyncAt).toLocaleString():'刚刚'));
+  const ok=await syncPush();
+  showToast(ok?('同步完成，上次同步 '+((DB.settings.sync.lastSyncAt)?new Date(DB.settings.sync.lastSyncAt).toLocaleString():'刚刚')):'同步失败，请检查网络后重试');
 }
 function setSyncEnabled(v){syncSet({enabled:v});save();if(v){syncNow();}render();}
 function setSyncKey(v){syncSet({key:String(v||'').trim()});save();}
@@ -1498,7 +1486,7 @@ closeModal();save();render();showToast('已新增计划');
 }
 function editTask(id){taskModal(id);}
 
-function delTask(id){confirmModal('删除任务','确定删除「'+esc(DB.tasks.find(x=>x.id===id).title)+'」？该操作不可撤销。','删除').then(ok=>{if(!ok)return;DB.tasks=DB.tasks.filter(x=>x.id!==id);DB.checkins.forEach(c=>{if(c.taskId===id)c.taskId=null;});closeModal();save();render();showToast('已删除');});}
+function delTask(id){confirmModal('删除任务','确定删除「'+esc(DB.tasks.find(x=>x.id===id).title)+'」？该操作不可撤销。','删除').then(ok=>{if(!ok)return;tombstone('tasks',id);DB.tasks=DB.tasks.filter(x=>x.id!==id);DB.checkins.forEach(c=>{if(c.taskId===id)c.taskId=null;});closeModal();save();render();showToast('已删除');});}
 /* ========== 打卡成果验证 ========== */
 function checkinModal(taskId){
 const t=taskId?DB.tasks.find(x=>x.id===taskId):null;
@@ -1618,8 +1606,11 @@ if(!ok)return;
 confirmModal('再次确认','真的要清空吗？建议先「导出 JSON」备份。','确认清空').then(ok2=>{
 if(!ok2)return;
 const keep=DB.settings;
+const del={};
+['goals','tasks','checkins','events','pomodoros','ledgers','bills','memos','clothes'].forEach(col=>{(Array.isArray(DB[col])?DB[col]:[]).forEach(it=>{if(it&&it.id){del[col]=del[col]||{};del[col][it.id]=Date.now();}});});
 DB=emptyState();
 DB.settings=keep;
+DB.deleted=del;
 save();render();
 showToast(syncEnabled()?'已清空全部数据（已同步到云端）':'已清空全部数据');
 });
@@ -1701,7 +1692,7 @@ closeModal();save();render();showToast('已保存');
 }
 function delEvent(){
 const e=DB.events.find(x=>x.id===evId);if(!e)return;
-confirmModal('删除事件','确定删除「'+esc(e.title)+'」？','删除').then(ok=>{if(!ok)return;DB.events=DB.events.filter(x=>x.id!==evId);closeModal();save();render();showToast('已删除');});
+confirmModal('删除事件','确定删除「'+esc(e.title)+'」？','删除').then(ok=>{if(!ok)return;tombstone('events',evId);DB.events=DB.events.filter(x=>x.id!==evId);closeModal();save();render();showToast('已删除');});
 }
 function doneEvent(id){const e=DB.events.find(x=>x.id===id);if(!e)return;e.done=true;e.updatedAt=Date.now();save();render();showToast('已完成并隐藏');}
 function undoneEvent(id){const e=DB.events.find(x=>x.id===id);if(!e)return;e.done=false;e.updatedAt=Date.now();save();render();showToast('已恢复');}
@@ -1735,7 +1726,7 @@ closeModal();save();render();showToast('已保存勋章');
 }
 function delBadge(id){
 const r=DB.settings.rewards.find(x=>x.id===id);if(!r)return;
-confirmModal('删除勋章','确定删除「'+esc(r.name)+'」？','删除').then(ok=>{if(!ok)return;DB.settings.rewards=DB.settings.rewards.filter(x=>x.id!==id);save();render();showToast('已删除勋章');});
+confirmModal('删除勋章','确定删除「'+esc(r.name)+'」？','删除').then(ok=>{if(!ok)return;tombstone('rewards',id);DB.settings.rewards=DB.settings.rewards.filter(x=>x.id!==id);save();render();showToast('已删除勋章');});
 }
 /* ========== 目标管理 ========== */
 function goalModal(id){
@@ -1768,7 +1759,7 @@ function delGoal(id){
 const target=id||gid;
 if(!target)return;
 const e=DB.goals.find(x=>x.id===target);if(!e)return;
-confirmModal('删除目标','确定删除「'+esc(e.title)+'」？关联任务不会被删除。','删除').then(ok=>{if(!ok)return;DB.goals=DB.goals.filter(x=>x.id!==target);closeModal();save();render();showToast('已删除目标');});
+confirmModal('删除目标','确定删除「'+esc(e.title)+'」？关联任务不会被删除。','删除').then(ok=>{if(!ok)return;tombstone('goals',target);DB.goals=DB.goals.filter(x=>x.id!==target);closeModal();save();render();showToast('已删除目标');});
 }
 /* ========== 层管理弹窗 ========== */
 function goalManage(){
@@ -2124,7 +2115,7 @@ window.__bmId='';
 save();closeModal();render();showToast(eid?'已更新':'已记一笔');
 }
 function moneyDel(id){
-confirmModal('删除账单','确定删除这笔账单？该操作不可撤销。','删除').then(ok=>{if(!ok)return;DB.bills=DB.bills.filter(x=>x.id!==id);save();closeModal();render();showToast('已删除');});
+confirmModal('删除账单','确定删除这笔账单？该操作不可撤销。','删除').then(ok=>{if(!ok)return;tombstone('bills',id);DB.bills=DB.bills.filter(x=>x.id!==id);save();closeModal();render();showToast('已删除');});
 }
 function moneyBudget(kind,cat,val){
 const ld=curLedger();
@@ -2218,6 +2209,8 @@ function ledgerDel(id){
 const l=DB.ledgers.find(x=>x.id===id);if(!l)return;
 const n=DB.bills.filter(b=>b.ledgerId===id).length;
 confirmModal('删除账本','删除「'+esc(l.name)+'」将同时删除该账本下 '+n+' 笔账单，不可撤销。','删除').then(ok=>{if(!ok)return;
+tombstone('ledgers',id);
+DB.bills.filter(b=>b.ledgerId===id).forEach(b=>tombstone('bills',b.id));
 DB.bills=DB.bills.filter(b=>b.ledgerId!==id);
 DB.ledgers=DB.ledgers.filter(x=>x.id!==id);
 if(!DB.ledgers.length){DB.ledgers.push({id:'main',name:'默认账本',currency:'CNY',isDefault:true,createdAt:Date.now()});}
@@ -2384,7 +2377,7 @@ closeModal();save();render();showToast('已保存');
 }
 function memoDel(id){
 const m=DB.memos.find(x=>x.id===id);if(!m)return;
-confirmModal('删除','删除「'+esc(m.title)+'」？','删除').then(ok=>{if(!ok)return;DB.memos=DB.memos.filter(x=>x.id!==id);closeModal();save();render();showToast('已删除');});
+confirmModal('删除','删除「'+esc(m.title)+'」？','删除').then(ok=>{if(!ok)return;tombstone('memos',id);DB.memos=DB.memos.filter(x=>x.id!==id);closeModal();save();render();showToast('已删除');});
 }
 function memoDone(id){
 const m=DB.memos.find(x=>x.id===id);if(!m)return;
@@ -2417,7 +2410,7 @@ closeModal();save();render();showToast('已保存');
 }
 function closetDel(id){
 const c=DB.clothes.find(x=>x.id===id);if(!c)return;
-confirmModal('删除','删除「'+esc(c.title)+'」？','删除').then(ok=>{if(!ok)return;DB.clothes=DB.clothes.filter(x=>x.id!==id);closeModal();save();render();showToast('已删除');});
+confirmModal('删除','删除「'+esc(c.title)+'」？','删除').then(ok=>{if(!ok)return;tombstone('clothes',id);DB.clothes=DB.clothes.filter(x=>x.id!==id);closeModal();save();render();showToast('已删除');});
 }
 function closetWear(id){
 const c=DB.clothes.find(x=>x.id===id);if(!c)return;
@@ -2479,7 +2472,7 @@ restoreUI();
 loadPomo();
 if(pomo.running){const _now=Date.now();if(pomo.mode!=='up'&&pomo.endAt<=_now){pomo.running=false;recordPomo(pomo.planMin*60);pomo={running:false,active:false,mode:'focus',taskId:null,planMin:25,startedAt:0,endAt:0,leftSec:0,accSec:0};savePomo();save();}else{pomoStartTimer();}}
 render();
-syncPull();
+syncPush();
 if(n)setTimeout(()=>showToast('已自动顺延 '+n+' 项逾期任务到明天'),600);
 if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('/sw.js').catch(()=>{});
 </script>
