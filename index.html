@@ -315,6 +315,7 @@ textarea{resize:vertical}
 .m-sum{grid-template-columns:repeat(2,1fr)}
 .m-legend{grid-template-columns:repeat(2,1fr)}
 .m-bgcats{grid-template-columns:repeat(2,1fr)}
+.hd-ctls .m-add{margin-left:auto}
 .closet-grid{grid-template-columns:1fr}
 .closet-cats{grid-template-columns:1fr}
 .memo-tabs,.report-tabs{display:flex}
@@ -344,6 +345,73 @@ textarea{resize:vertical}
 ::-webkit-scrollbar{width:8px;height:8px}
 ::-webkit-scrollbar-thumb{background:#c6d2be;border-radius:99px}
 
+/* 记账页改版 */
+.m-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.m-top h2{margin:0;font-size:1.1rem}
+.m-tabs{display:flex;gap:6px}
+.m-tabs button{border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 12px;font-size:.82rem;cursor:pointer;color:#555}
+.m-tabs button.on{background:var(--green);color:#fff;border-color:var(--green);font-weight:700}
+.hd-ctls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-left:auto}
+.m-ldg{border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-size:.8rem;background:#fff;max-width:150px}
+.m-bal{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.m-bal .b1{flex:0 0 150px}
+.m-bal .lbl{font-size:.75rem;color:var(--muted)}
+.m-bal .num{font-size:1.45rem;font-weight:800}
+.m-bal .num.g{color:var(--green)}.m-bal .num.r{color:var(--danger)}
+.bar-row{display:flex;align-items:center;gap:8px;margin:5px 0;font-size:.8rem}
+.bar-row .bl{width:30px;color:#666;flex:none}
+.bar-track{flex:1;height:16px;background:#f0f2ee;border-radius:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:8px}
+.bar-row .bv{width:78px;text-align:right;color:#333;font-weight:600;flex:none}
+.m-two{display:flex;gap:14px;align-items:stretch}
+.m-two .left{flex:0 0 300px;min-width:0}
+.m-two .right{flex:1;min-width:0}
+.ycell{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.ycell .m-monthbars{width:100%}
+@media(max-width:640px){.m-two{flex-direction:column;gap:10px}.m-two .left{flex:1;width:100%}.ycell{display:block}.ycell .m-monthbars{height:96px}}
+.panel-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:1rem;margin-bottom:6px}
+.m-cal{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.m-cal .wd{text-align:center;font-size:.62rem;color:var(--muted);padding:2px 0}
+.m-cal .d{text-align:center;font-size:.72rem;padding:4px 0;border-radius:6px;color:#444;cursor:pointer}
+.m-cal .d:hover{background:#eef3ea}
+.m-cal .d.other{color:#c3c9c0}
+.m-cal .d.today{background:var(--green);color:#fff;font-weight:700}
+.m-cal .d.has{color:var(--danger);font-weight:600}
+.m-cal .d.sel{box-shadow:inset 0 0 0 2px var(--green)}
+.m-bill2{display:flex;align-items:center;gap:8px;padding:8px 2px;border-bottom:1px dashed var(--line);cursor:pointer}
+.m-bill2:last-child{border-bottom:none}
+.m-bill2:hover{background:#fafcf7}
+.m-donut2{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.m-donut2 .donut-n{font-size:.9rem;font-weight:800;fill:#333}
+.m-donut2 .donut-l{font-size:.62rem;fill:var(--muted)}
+.lg-grid2{flex:1;min-width:0;display:grid;grid-template-columns:repeat(4,1fr);gap:6px 12px;align-content:center}
+@media(max-width:640px){.lg-grid2{grid-template-columns:repeat(2,1fr)}}
+.m-lg2{display:flex;align-items:center;gap:6px;font-size:.74rem;min-width:0}
+.m-lg2 .dot{width:8px;height:8px;flex:none}
+.m-lg2 .t{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.m-lg2 b{margin-left:auto;padding-left:6px}
+.m-chart{position:relative;margin-top:6px}
+.m-chart .tip{position:absolute;pointer-events:none;background:rgba(51,51,51,.9);color:#fff;font-size:.7rem;padding:4px 8px;border-radius:6px;white-space:nowrap;display:none;z-index:20}
+.stat3{display:flex;gap:8px;margin:10px 0 4px}
+.stat3 div{flex:1;background:#f5f7f2;border-radius:10px;padding:8px;text-align:center}
+.stat3 small{display:block;color:var(--muted);font-size:.68rem}
+.stat3 b{font-size:.95rem;color:#333}
+.rank2 .rk2{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:.8rem}
+.rank2 .rk2 .n{width:64px;color:#555;flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank2 .rk2 .track{flex:1;height:14px;background:#f0f2ee;border-radius:7px;overflow:hidden}
+.rank2 .rk2 .fill{height:100%;border-radius:7px}
+.rank2 .rk2 .v{width:64px;text-align:right;font-weight:600;color:#333;flex:none}
+.m-monthbars{display:flex;align-items:flex-end;gap:4px;height:150px;margin:6px 0}
+.m-monthbars .mb{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer}
+.m-monthbars .bar{width:70%;background:var(--green);border-radius:3px}
+.m-monthbars .mb.sel .bar{background:#E07B39}
+.m-monthbars .ml{font-size:.6rem;color:var(--muted)}
+.m-collapse{display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:700;font-size:.95rem}
+.m-collapse .arr{transition:transform .2s;color:var(--muted)}
+.m-collapse.open .arr{transform:rotate(90deg)}
+.m-collapse small{font-weight:400;color:var(--muted)}
+.m-collapse .m-tabs{margin-left:auto}
+.m-collapse .m-tabs button{padding:2px 8px;font-size:.7rem}
 /* 重要倒计时 */
 .cd-card .cd-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:10px;margin-bottom:6px;cursor:pointer;background:#fff}
 .cd-card .cd-item.done{opacity:.55}
@@ -359,6 +427,26 @@ textarea{resize:vertical}
 .cd-card{margin-top:12px}
 .layers{margin-top:12px}
 .badge-card h2 .ic{width:15px;height:15px;color:var(--green)}
+/* 预算卡（紧凑版） */
+.bud3-h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:.95rem}
+.bud3-h b{display:flex;align-items:center;gap:6px;font-weight:700}
+.bud3-h b .ic{color:var(--green)}
+.bud3-h .btn{flex:none}
+.bud3-tot{display:flex;align-items:center;gap:10px;margin:10px 0 6px;font-size:.8rem;color:var(--muted);flex-wrap:wrap}
+.bud3-tot b{color:var(--ink);font-size:.95rem}
+.bud3-tot .sp{flex:1}
+.bud3-bar{position:relative;height:14px;background:#f0f2ee;border-radius:7px;margin:6px 0 4px}
+.bud3-bar .fill{position:absolute;left:0;top:0;bottom:0;border-radius:7px}
+.bud3-bar .over{position:absolute;top:0;bottom:0;background:repeating-linear-gradient(45deg,var(--danger) 0 6px,#f2a6a6 6px 12px);border-radius:7px}
+.bud3-line{display:flex;justify-content:space-between;gap:8px;font-size:.75rem;color:var(--muted);margin-top:4px;flex-wrap:wrap}
+.bud3-line .od{color:var(--danger);font-weight:700}
+.bud3-cat{color:var(--danger);font-size:.72rem;font-weight:600;margin-top:4px}
+.bud3-legend{font-size:.68rem;color:var(--muted);display:flex;gap:10px;margin-top:6px;flex-wrap:wrap}
+.bud3-legend span{display:inline-flex;align-items:center;gap:4px}
+.bud3-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.m-cc input{width:88px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:3px 6px;font-size:.78rem;flex:none}
+/* 手机端月视图：日历压缩、右侧账单变宽（仅 mrow 月视图，年视图不变） */
+@media(max-width:640px){.m-two.mrow{flex-direction:row;gap:10px}.m-two.mrow .left{flex:0 0 200px;width:auto}.m-two.mrow .right{flex:1;min-width:0}.m-two.mrow .m-cal{gap:1px}.m-two.mrow .m-cal .wd{font-size:.56rem;padding:1px 0}.m-two.mrow .m-cal .d{font-size:.66rem;padding:2px 0}.m-two.mrow .panel-h{font-size:.85rem}}
 </style>
 </head>
 <body>
@@ -485,7 +573,7 @@ const timeAdd=(s,m)=>{const p=String(s||'').split(':');const n=((Number(p[0])||0
 const nowStamp=()=>{const d=new Date();return fmt(d)+' '+pad(d.getHours())+':'+pad(d.getMinutes());};
 /* ========== 存储 ========== */
 let DB=null;
-const state={tab:'today',calY:new Date().getFullYear(),calM:new Date().getMonth(),calView:'month',weekStart:startOfWeek(new Date()),showHiddenEvents:false,moneyLedger:null,moneyYM:'',moneyFilter:'all',memoSub:'remind',memoOpen:false,weekSub:'week',weekOpen:false,monthYM:'',weekLedger:null};
+const state={tab:'today',calY:new Date().getFullYear(),calM:new Date().getMonth(),calView:'month',weekStart:startOfWeek(new Date()),showHiddenEvents:false,moneyLedger:null,moneyYM:'',moneyFilter:'all',moneyView:'month',moneyDay:'',memoSub:'remind',memoOpen:false,weekSub:'week',weekOpen:false,monthYM:'',weekLedger:null};
 const POMO_KEY='lifelong-goal-board-pomo';
 let pomo={running:false,active:false,mode:'focus',taskId:null,planMin:25,startedAt:0,endAt:0,leftSec:0,accSec:0};
 function loadPomo(){try{const r=localStorage.getItem(POMO_KEY);if(r){const p=JSON.parse(r);if(p&&typeof p==='object')pomo=Object.assign({running:false,active:false,mode:'focus',taskId:null,planMin:25,startedAt:0,endAt:0,leftSec:0,accSec:0},p);}}catch(e){}}
@@ -556,7 +644,7 @@ return out;
 }
 function save(){DB.meta.updatedAt=Date.now();try{localStorage.setItem(LS_KEY,JSON.stringify(DB));}catch(e){showToast('保存失败：本地存储空间不足');}scheduleSyncPush();}
 function tombstone(col,id){if(!id)return;DB.deleted=DB.deleted||{};DB.deleted[col]=DB.deleted[col]||{};DB.deleted[col][id]=Date.now();}
-function saveUI(){try{localStorage.setItem(UI_KEY,JSON.stringify({tab:state.tab,calY:state.calY,calM:state.calM,calView:state.calView,weekStart:fmt(state.weekStart),showHiddenEvents:!!state.showHiddenEvents,moneyLedger:state.moneyLedger||null,memoSub:state.memoSub,weekSub:state.weekSub,monthYM:state.monthYM||null,weekLedger:state.weekLedger||null}));}catch(e){}}
+function saveUI(){try{localStorage.setItem(UI_KEY,JSON.stringify({tab:state.tab,calY:state.calY,calM:state.calM,calView:state.calView,weekStart:fmt(state.weekStart),showHiddenEvents:!!state.showHiddenEvents,moneyLedger:state.moneyLedger||null,moneyView:state.moneyView||'month',moneyDay:state.moneyDay||'',memoSub:state.memoSub,weekSub:state.weekSub,monthYM:state.monthYM||null,weekLedger:state.weekLedger||null}));}catch(e){}}
 function restoreUI(){
 try{
 const raw=localStorage.getItem(UI_KEY);if(!raw)return;
@@ -568,6 +656,8 @@ if(u.calView==='month'||u.calView==='week')state.calView=u.calView;
 if(typeof u.weekStart==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(u.weekStart)){const dd=parseD(u.weekStart);if(!isNaN(dd.getTime()))state.weekStart=startOfWeek(dd);}
 if(typeof u.showHiddenEvents==='boolean')state.showHiddenEvents=u.showHiddenEvents;
 if(typeof u.moneyLedger==='string'&&(DB.ledgers||[]).some(l=>l.id===u.moneyLedger))state.moneyLedger=u.moneyLedger;
+if(u.moneyView==='month'||u.moneyView==='year')state.moneyView=u.moneyView;
+if(typeof u.moneyDay==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(u.moneyDay))state.moneyDay=u.moneyDay;
 if(typeof u.memoSub==='string'&&MEMO_SUBS.some(s=>s[0]===u.memoSub))state.memoSub=u.memoSub;
 if(u.weekSub==='week'||u.weekSub==='month')state.weekSub=u.weekSub;
 if(typeof u.monthYM==='string'&&/^\d{4}-\d{2}$/.test(u.monthYM))state.monthYM=u.monthYM;
@@ -2020,19 +2110,36 @@ function moneyGoalLine(){
 const ms=moneyMonthSummary();
 return '<div style="margin-top:4px;padding-top:6px;border-top:1px dashed var(--line);font-size:.8rem">'+icon('money')+'本月（主账本）：支出 <b>'+ms.sym+fmtMoney(ms.exp)+'</b> · 结余 <b style="color:'+(ms.balance>=0?'var(--green)':'var(--danger)')+'">'+ms.sym+fmtMoney(ms.balance)+'</b></div>';
 }
+/* 记账页改版 */
 /* ========== 账本导入/导出 ========== */
 function moneyIoCard(){return '<section class="card" style="margin-top:10px"><h2>'+icon('upload')+'账本导入/导出</h2>'+
 '<div class="row2" style="margin-top:6px">'+
-'<button class="btn" onclick="App.moneyExportExcel()">'+icon('download')+'导出 Excel（分类着色）</button>'+
-'<button class="btn" onclick="App.moneyExportCsv()">'+icon('download')+'导出 CSV</button>'+
+'<button class="btn" onclick="App.moneyExportModal(\'xlsx\')">'+icon('download')+'导出 Excel（分类着色）</button>'+
+'<button class="btn" onclick="App.moneyExportModal(\'csv\')">'+icon('download')+'导出 CSV</button>'+
 '<label class="btn" style="display:inline-flex">'+icon('upload')+'导入 CSV<input type="file" accept=".csv,text/csv" style="display:none" onchange="App.moneyImportFile(event)"></label>'+
 '</div>'+
-'<p style="font-size:.75rem;color:var(--muted);margin-top:6px">导出包含全部账本；Excel 中不同分类的格子按分类着色。导入支持本应用导出的 CSV 与喵喵记账 CSV，重复账单自动跳过。</p>'+
+'<p style="font-size:.75rem;color:var(--muted);margin-top:6px">导出前可选择账本与日期范围；Excel 中不同分类的格子按分类着色。导入支持本应用导出的 CSV 与喵喵记账 CSV，重复账单自动跳过。</p>'+
 '</section>';}
 function dlBlob(name,blob){try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);showToast('已导出 '+name);}catch(e){showToast('下载被拦截，请换浏览器重试');}}
-function moneyExportRows(){return (DB.bills||[]).slice().sort((a,b)=>a.date.localeCompare(b.date)||((a.createdAt||0)-(b.createdAt||0))).map(b=>{const ld=(DB.ledgers||[]).find(l=>l.id===b.ledgerId)||{name:'',currency:''};return [b.date,b.type==='income'?'收入':'支出',b.category,(b.amount/100).toFixed(2),b.note||'',ld.name||'',ld.currency||''];});}
-function moneyExportCsv(){const rows=[['日期','类型','分类','金额','备注','账本','货币']].concat(moneyExportRows());const csv='\uFEFF'+rows.map(r=>r.map(x=>{const s=String(x==null?'':x);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}).join(',')).join('\r\n');dlBlob('账本导出_'+todayStr()+'.csv',new Blob([csv],{type:'text/csv;charset=utf-8'}));}
-function moneyCatFill(c){const m={};CAT_COLORS.forEach((cc,i)=>{const n=allExpCats()[i];if(n)m[n]=cc;});m['工资']='#4C9A6A';m['奖金']='#D4A92B';m['理财']='#3E7CB1';m['其他']='#8b95a3';return m[c]||'#8b95a3';}
+function moneyExportRows(o){o=o||{};return (DB.bills||[]).filter(b=>{if(o.ledgerId&&b.ledgerId!==o.ledgerId)return false;if(o.from&&b.date<o.from)return false;if(o.to&&b.date>o.to)return false;return true;}).sort((a,b)=>a.date.localeCompare(b.date)||((a.createdAt||0)-(b.createdAt||0))).map(b=>{const ld=(DB.ledgers||[]).find(l=>l.id===b.ledgerId)||{name:'',currency:''};return [b.date,b.type==='income'?'收入':'支出',b.category,(b.amount/100).toFixed(2),b.note||'',ld.name||'',ld.currency||''];});}
+function moneyExportCsv(o){const rows=[['日期','类型','分类','金额','备注','账本','货币']].concat(moneyExportRows(o));const csv='\uFEFF'+rows.map(r=>r.map(x=>{const s=String(x==null?'':x);return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}).join(',')).join('\r\n');dlBlob('账本导出_'+todayStr()+'.csv',new Blob([csv],{type:'text/csv;charset=utf-8'}));}
+function moneyExportModal(type){
+const ldOpts='<option value="">全部账本</option>'+ (DB.ledgers||[]).map(l=>'<option value="'+l.id+'">'+esc(l.name)+' '+curSym(l.currency)+'</option>').join('');
+openModal('<h3>'+icon('download')+'导出账本</h3>'+
+'<label>账本</label><select id="ex-ldg">'+ldOpts+'</select>'+
+'<label>开始日期</label><input type="date" id="ex-from" value="">'+
+'<label>结束日期</label><input type="date" id="ex-to" value="">'+
+'<p style="font-size:.75rem;color:var(--muted)">账本选「全部账本」或指定；日期留空表示不过滤。</p>'+
+'<div class="md-actions"><button class="btn" onclick="App.closeModal()">取消</button><button class="btn primary" onclick="App.moneyDoExport(\''+type+'\')">'+icon('download')+'导出</button></div>');
+}
+function moneyDoExport(type){
+const ldg=($('#ex-ldg')||{}).value||'';
+const from=($('#ex-from')||{}).value||'';
+const to=($('#ex-to')||{}).value||'';
+closeModal();
+const o={ledgerId:ldg||null,from:from||null,to:to||null};
+if(type==='xlsx')moneyExportExcel(o);else moneyExportCsv(o);
+}function moneyCatFill(c){const m={};CAT_COLORS.forEach((cc,i)=>{const n=allExpCats()[i];if(n)m[n]=cc;});m['工资']='#4C9A6A';m['奖金']='#D4A92B';m['理财']='#3E7CB1';m['其他']='#8b95a3';return m[c]||'#8b95a3';}
 const CRC_TBL=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;})();
 function crc32(u8){let c=0xFFFFFFFF;for(let i=0;i<u8.length;i++)c=CRC_TBL[(c^u8[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0;}
 function xmlEsc(s){return String(s==null?'':s).replace(/[<>&'"]/g,ch=>({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;',"'":'&apos;'}[ch]));}
@@ -2045,26 +2152,110 @@ cd.push({h:ch,name});off+=30+name.length+data.length;}
 const cdStart=off;let cdSize=0;const cdChunks=[];for(const e of cd){cdChunks.push(e.h,e.name);cdSize+=e.h.length+e.name.length;}
 const eocd=new Uint8Array(22),ev=new DataView(eocd.buffer);ev.setUint32(0,0x06054b50,true);ev.setUint16(4,0,true);ev.setUint16(6,0,true);ev.setUint16(8,files.length,true);ev.setUint16(10,files.length,true);ev.setUint32(12,cdSize,true);ev.setUint32(16,cdStart,true);ev.setUint16(20,0,true);
 const all=chunks.concat(cdChunks,[eocd]);let total=0;all.forEach(c=>total+=c.length);const out=new Uint8Array(total);let p=0;for(const c of all){out.set(c,p);p+=c.length;}return out;}
-function moneyExportExcel(){
-const rows=[['日期','类型','分类','金额','备注','账本','货币']].concat(moneyExportRows());
-const cats=[];rows.slice(1).forEach(r=>{if(!cats.includes(r[2]))cats.push(r[2]);});
+function expByDay(list,ym){const dim=new Date(+ym.slice(0,4),+ym.slice(5,7),0).getDate();const a=new Array(dim).fill(0);list.forEach(b=>{if(b.type==='expense'){const d=+b.date.slice(8,10);if(d>=1&&d<=dim)a[d-1]+=Number(b.amount)||0;}});return a;}
+function expByMonth(list,yr){const a=new Array(12).fill(0);list.forEach(b=>{if(b.type==='expense'){const m=+b.date.slice(5,7);if(m>=1&&m<=12)a[m-1]+=Number(b.amount)||0;}});return a;}
+function expCatRank(list){const o={};list.forEach(b=>{if(b.type==='expense')o[b.category]=(o[b.category]||0)+Number(b.amount)||0;});return Object.entries(o).sort((a,b)=>b[1]-a[1]);}
+function moneyExportExcel(o){
+o=o||{};
+const bills=(DB.bills||[]).filter(b=>{if(o.ledgerId&&b.ledgerId!==o.ledgerId)return false;if(o.from&&b.date<o.from)return false;if(o.to&&b.date>o.to)return false;return true;}).sort((a,b)=>a.date.localeCompare(b.date)||((a.createdAt||0)-(b.createdAt||0)));
+const byMonth={};bills.forEach(b=>{const ym=b.date.slice(0,7);(byMonth[ym]=byMonth[ym]||[]).push(b);});
+const months=Object.keys(byMonth).sort();
+const yr=months.length?months[0].slice(0,4):moneyYMNow().slice(0,4);
+const strs=[];const sIdx=new Map();function S(v){const s=String(v==null?'':v);if(!sIdx.has(s)){sIdx.set(s,strs.length);strs.push(s);}return sIdx.get(s);}
+function colL(i){let s='';i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;}
+const cats=[];bills.forEach(b=>{if(!cats.includes(b.category))cats.push(b.category);});
 const fills=['<fill><patternFill patternType="none"/></fill>','<fill><patternFill patternType="gray125"/></fill>'];
-const xfs=['<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>','<xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/>'];
-const styleIdx={};
-cats.forEach((c,i)=>{fills.push('<fill><patternFill patternType="solid"><fgColor rgb="FF'+moneyCatFill(c).replace('#','')+'"/><bgColor indexed="64"/></patternFill></fill>');xfs.push('<xf numFmtId="0" fontId="2" fillId="'+(2+i)+'" borderId="0" xfId="0" applyFont="1" applyFill="1"/>');styleIdx[c]=2+i;});
+const xfs=['<xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>','<xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1" applyFill="1"/>'];
+const catStyle={},tintStyle={};
+cats.forEach((c,i)=>{
+const hex=moneyCatFill(c).replace('#','');
+fills.push('<fill><patternFill patternType="solid"><fgColor rgb="FF'+hex+'"/><bgColor indexed="64"/></patternFill></fill>');catStyle[c]=xfs.length;xfs.push('<xf numFmtId="0" fontId="2" fillId="'+(fills.length-1)+'" borderId="0" xfId="0" applyFont="1" applyFill="1"/>');
+const r=parseInt(hex.slice(0,2),16),g=parseInt(hex.slice(2,4),16),b=parseInt(hex.slice(4,6),16);
+const th=('0'+Math.round(r+(255-r)*0.88).toString(16)).slice(-2)+('0'+Math.round(g+(255-g)*0.88).toString(16)).slice(-2)+('0'+Math.round(b+(255-b)*0.88).toString(16)).slice(-2);
+fills.push('<fill><patternFill patternType="solid"><fgColor rgb="FF'+th+'"/><bgColor indexed="64"/></patternFill></fill>');tintStyle[c]=xfs.length;xfs.push('<xf numFmtId="0" fontId="0" fillId="'+(fills.length-1)+'" borderId="0" xfId="0" applyFill="1"/>');
+});
 const styles='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><fonts count="3"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font><font><b/><color rgb="FFFFFFFF"/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="'+fills.length+'">'+fills.join('')+'</fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="'+xfs.length+'">'+xfs.join('')+'</cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>';
-const strs=[],sIdx=new Map();const S=v=>{const s=String(v==null?'':v);if(!sIdx.has(s)){sIdx.set(s,strs.length);strs.push(s);}return sIdx.get(s);};
-const colLetter=i=>{let s='';i++;while(i>0){const m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26);}return s;};
-let sheet='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>';
-rows.forEach((r,ri)=>{let cells='';r.forEach((v,ci)=>{let s=0,val,isS=false;if(ri===0){val=S(v);isS=true;s=1;}else if(ci===2){val=S(v);isS=true;s=styleIdx[v]||2;}else if(ci===0||ci===1||ci===4||ci===5||ci===6){val=S(v);isS=true;}else{val=Number(v)||0;}cells+='<c r="'+colLetter(ci)+(ri+1)+'"'+(isS?' t="s"':'')+(s?' s="'+s+'"':'')+'><v>'+val+'</v></c>';});sheet+='<row r="'+(ri+1)+'">'+cells+'</row>';});
-sheet+='</sheetData></worksheet>';
-const sst='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="'+strs.length+'" uniqueCount="'+strs.length+'">'+strs.map(x=>'<si><t>'+xmlEsc(x)+'</t></si>').join('')+'</sst>';
-const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="账本" sheetId="1" r:id="rId1"/></sheets></workbook>';
-const ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/></Types>';
-const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
-const wrels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/></Relationships>';
+function chartXml(type,title,sheet,catRef,valRef,dPts){
+if(type==='pie'){
+const pts=(dPts||[]).map((hex,i)=>'<c:dPt><c:idx val="'+i+'"/><c:spPr><a:solidFill><a:srgbClr val="'+hex+'"/></a:solidFill></c:spPr></c:dPt>').join('');
+return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><c:chart><c:title><c:tx><c:rich><a:bodyPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"/><a:p xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:pPr><a:defRPr/></a:pPr><a:r><a:t>'+xmlEsc(title)+'</a:t></a:r></a:p></c:rich></c:tx></c:title><c:plotArea><c:layout/><c:pieChart><c:varyColors val="1"/><c:ser><c:idx val="0"/><c:order val="0"/><c:cat><c:strRef><c:f>\''+sheet+'\'!'+catRef+'</c:f></c:strRef></c:cat><c:val><c:numRef><c:f>\''+sheet+'\'!'+valRef+'</c:f></c:numRef></c:val></c:ser>'+pts+'<c:dLbls><c:showLegendKey val="0"/><c:showVal val="0"/><c:showCatName val="1"/><c:showSerName val="0"/><c:showPercent val="1"/></c:dLbls><c:firstSliceAng val="0"/></c:pieChart></c:plotArea><c:plotVisOnly val="1"/><c:dispBlanksAs val="gap"/></c:chart></c:chartSpace>';
+}
+const barDir=type==='hbar'?'<c:barDir val="bar"/>':'<c:barDir val="col"/>';
+const ser=(type==='line')
+?'<c:lineChart><c:grouping val="standard"/><c:ser><c:idx val="0"/><c:order val="0"/><c:marker><c:symbol val="circle"/></c:marker><c:cat><c:numRef><c:f>\''+sheet+'\'!'+catRef+'</c:f></c:numRef></c:cat><c:val><c:numRef><c:f>\''+sheet+'\'!'+valRef+'</c:f></c:numRef></c:val></c:ser><c:axId val="10"/><c:axId val="100"/></c:lineChart>'
+:'<c:barChart>'+barDir+'<c:grouping val="clustered"/><c:ser><c:idx val="0"/><c:order val="0"/><c:cat><c:numRef><c:f>\''+sheet+'\'!'+catRef+'</c:f></c:numRef></c:cat><c:val><c:numRef><c:f>\''+sheet+'\'!'+valRef+'</c:f></c:numRef></c:val></c:ser><c:gapWidth val="150"/><c:axId val="10"/><c:axId val="100"/></c:barChart>';
+return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?><c:chartSpace xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart"><c:chart><c:title><c:tx><c:rich><a:bodyPr xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"/><a:p xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:pPr><a:defRPr/></a:pPr><a:r><a:t>'+xmlEsc(title)+'</a:t></a:r></a:p></c:rich></c:tx></c:title><c:plotArea>'+ser+'<c:catAx><c:axId val="10"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:axPos val="l"/><c:majorTickMark val="none"/><c:minorTickMark val="none"/><c:crossAx val="100"/><c:lblOffset val="100"/></c:catAx><c:valAx><c:axId val="100"/><c:scaling><c:orientation val="minMax"/></c:scaling><c:axPos val="l"/><c:majorGridlines/><c:majorTickMark val="none"/><c:minorTickMark val="none"/><c:crossAx val="10"/></c:valAx></c:plotArea><c:plotVisOnly val="1"/><c:dispBlanksAs val="gap"/></c:chart></c:chartSpace>';
+}
+let si=0,cn=0;const wsXml=[],wbSheets=[],sheetRelXml=[],drawingXml=[],drawingRelXml=[],chartXmls=[];
+function addSheet(name,billList,extra){
+si++;
+const n=billList.length;
+let rows='<row r="1">'+['日期','类型','分类','金额','备注'].map((h,ci)=>'<c r="'+colL(ci)+'1" t="s" s="1"><v>'+S(h)+'</v></c>').join('')+'</row>';
+billList.forEach((b,ri)=>{const rn=ri+2;const inc=b.type==='income';const cs=catStyle[b.category]||0;
+rows+='<row r="'+rn+'"><c r="A'+rn+'" t="s" s="'+cs+'"><v>'+S(b.date)+'</v></c><c r="B'+rn+'" t="s" s="'+cs+'"><v>'+S(inc?'收入':'支出')+'</v></c><c r="C'+rn+'" t="s" s="'+cs+'"><v>'+S(b.category)+'</v></c><c r="D'+rn+'" s="'+cs+'"><v>'+(b.amount/100).toFixed(2)+'</v></c><c r="E'+rn+'" t="s" s="'+cs+'"><v>'+S(b.note||'')+'</v></c></row>';});
+let chartRows='',anchors='';
+if(extra){
+extra.forEach((ex,ei)=>{
+const tableRows=ex.data.length;
+chartRows+='<row r="'+(ex.tblRow)+'"><c t="s" s="1"><v>'+S(ex.title)+'</v></c></row>';
+chartRows+='<row r="'+(ex.tblRow+1)+'"><c t="s" s="1"><v>'+S(ex.catLabel)+'</v></c><c t="s" s="1"><v>'+S(ex.valLabel)+'</v></c></row>';
+ex.data.forEach((d,di)=>{const rn=ex.tblRow+2+di;chartRows+='<row r="'+rn+'"><c t="s"><v>'+S(d[0])+'</v></c><c><v>'+Number(d[1]).toFixed(2)+'</v></c></row>';});
+const catRef='A'+(ex.tblRow+2)+':A'+(ex.tblRow+1+tableRows);
+const valRef='B'+(ex.tblRow+2)+':B'+(ex.tblRow+1+tableRows);
+cn++;chartXmls.push({name:'xl/charts/chart'+cn+'.xml',data:new TextEncoder().encode(chartXml(ex.type,ex.title,name,catRef,valRef,ex.colors))});
+anchors+='<xdr:oneCellAnchor><xdr:from><xdr:col>'+(ex.col||4)+'</xdr:col><xdr:colOff>0</xdr:colOff><xdr:row>'+(ex.anchorRow)+'</xdr:row><xdr:rowOff>0</xdr:rowOff></xdr:from><xdr:ext cx="5400000" cy="2700000"/><xdr:graphicFrame><xdr:nvGraphicFramePr><xdr:cNvPr id="'+(ei+1)+'" name="Chart '+(ei+1)+'"/><xdr:cNvGraphicFramePr/></xdr:nvGraphicFramePr><xdr:xfrm/><a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/chart"><c:chart xmlns:c="http://schemas.openxmlformats.org/drawingml/2006/chart" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="rId'+(ei+1)+'"/></a:graphicData></a:graphic></xdr:graphicFrame><xdr:clientData/></xdr:oneCellAnchor>';
+});
+}
+const hasDraw=!!extra&&extra.length;
+let sheet='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetData>'+rows+chartRows+'</sheetData><autoFilter ref="A1:E'+(n+1)+'"/>'+(hasDraw?'<drawing r:id="rId2"/>':'')+'</worksheet>';
+wsXml.push({name:'xl/worksheets/sheet'+si+'.xml',data:new TextEncoder().encode(sheet)});
+wbSheets.push('<sheet name="'+name.replace(/[\\\/\?\*\[\]:]/g,'_')+'" sheetId="'+si+'" r:id="rId'+si+'"/>');
+if(hasDraw){
+drawingXml.push({name:'xl/drawings/drawing'+si+'.xml',data:new TextEncoder().encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><xdr:wsDr xmlns:xdr="http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">'+anchors+'</xdr:wsDr>')});
+const rels=extra.map((_,ei)=>'<Relationship Id="rId'+(ei+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/chart" Target="/xl/charts/chart'+(cn-extra.length+ei+1)+'.xml"/>').join('');
+drawingRelXml.push({name:'xl/drawings/_rels/drawing'+si+'.xml.rels',data:new TextEncoder().encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+rels+'</Relationships>')});
+sheetRelXml.push({name:'xl/worksheets/_rels/sheet'+si+'.xml.rels',data:new TextEncoder().encode('<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/drawing" Target="/xl/drawings/drawing'+si+'.xml"/></Relationships>')});
+}
+}
+months.forEach(ym=>{
+const list=byMonth[ym];
+const daily=expByDay(list,ym);
+const rank=expCatRank(list);
+const dayData=daily.map((v,i)=>[String(i+1)+'日',v/100]);
+const rankData=rank.map(x=>[x[0],x[1]/100]);
+const n=list.length;
+addSheet(ym,list,[
+{type:'line',title:'每日支出折线',catLabel:'日期',valLabel:'支出(元)',data:dayData,tblRow:n+2,anchorRow:n+1,col:4},
+{type:'hbar',title:'支出类目排行',catLabel:'分类',valLabel:'金额(元)',data:rankData,tblRow:n+2+dayData.length+3,anchorRow:n+1+dayData.length+4,col:4},
+{type:'pie',title:'支出分类占比',catLabel:'分类',valLabel:'金额(元)',data:rankData,tblRow:n+2+dayData.length+3+rankData.length+3,anchorRow:n+1+dayData.length+4+rankData.length+3,col:4,colors:rank.map(x=>moneyCatFill(x[0]))}
+]);
+});
+const yrBills=bills.filter(b=>String(b.date||'').slice(0,4)===yr);
+const mExp=expByMonth(yrBills,yr);
+const yRank=expCatRank(yrBills);
+const mData=mExp.map((v,i)=>[String(i+1)+'月',v/100]);
+const yRankData=yRank.map(x=>[x[0],x[1]/100]);
+addSheet(yr+'年度',yrBills,[
+{type:'bar',title:'月度支出柱状',catLabel:'月份',valLabel:'支出(元)',data:mData,tblRow:yrBills.length+2,anchorRow:yrBills.length+1,col:4},
+{type:'hbar',title:'全年支出类目排行',catLabel:'分类',valLabel:'金额(元)',data:yRankData,tblRow:yrBills.length+2+mData.length+3,anchorRow:yrBills.length+1+mData.length+4,col:4},
+{type:'pie',title:'全年支出分类占比',catLabel:'分类',valLabel:'金额(元)',data:yRankData,tblRow:yrBills.length+2+mData.length+3+yRankData.length+3,anchorRow:yrBills.length+1+mData.length+4+yRankData.length+3,col:4,colors:yRank.map(x=>moneyCatFill(x[0]))}
+]);
 const enc=new TextEncoder();
-const files=[{name:'[Content_Types].xml',data:enc.encode(ct)},{name:'_rels/.rels',data:enc.encode(rels)},{name:'xl/workbook.xml',data:enc.encode(wb)},{name:'xl/_rels/workbook.xml.rels',data:enc.encode(wrels)},{name:'xl/worksheets/sheet1.xml',data:enc.encode(sheet)},{name:'xl/styles.xml',data:enc.encode(styles)},{name:'xl/sharedStrings.xml',data:enc.encode(sst)}];
+const ctWs=wsXml.map((_,i)=>'<Override PartName="/xl/worksheets/sheet'+(i+1)+'.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>').join('');
+const ctDraw=drawingXml.map(f=>'<Override PartName="/'+f.name+'" ContentType="application/vnd.openxmlformats-officedocument.drawing+xml"/>').join('');
+const ctCharts=chartXmls.map((_,i)=>'<Override PartName="/xl/charts/chart'+(i+1)+'.xml" ContentType="application/vnd.openxmlformats-officedocument.drawingml.chart+xml"/>').join('');
+const ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/><Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>'+ctWs+ctDraw+ctCharts+'</Types>';
+const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+const wbRel=wsXml.map((_,i)=>'<Relationship Id="rId'+(i+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet'+(i+1)+'.xml"/>').join('')+'<Relationship Id="rId'+(wsXml.length+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/><Relationship Id="rId'+(wsXml.length+2)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>';
+const wbRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+wbRel+'</Relationships>';
+const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>'+wbSheets.join('')+'</sheets></workbook>';
+const sst='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="'+strs.length+'" uniqueCount="'+strs.length+'">'+strs.map(x=>'<si><t>'+xmlEsc(x)+'</t></si>').join('')+'</sst>';
+const files=[{name:'[Content_Types].xml',data:enc.encode(ct)},{name:'_rels/.rels',data:enc.encode(rels)},{name:'xl/workbook.xml',data:enc.encode(wb)},{name:'xl/_rels/workbook.xml.rels',data:enc.encode(wbRels)},{name:'xl/styles.xml',data:enc.encode(styles)},{name:'xl/sharedStrings.xml',data:enc.encode(sst)}];
+wsXml.forEach(f=>files.push(f));
+sheetRelXml.forEach(f=>files.push(f));
+drawingXml.forEach(f=>files.push(f));
+drawingRelXml.forEach(f=>files.push(f));
+chartXmls.forEach(f=>files.push(f));
 dlBlob('账本导出_'+todayStr()+'.xlsx',new Blob([zipStore(files)],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
 }
 function csvParse(text){const t=String(text||'').replace(/^\uFEFF/,'');const out=[];t.split(/\r?\n/).forEach(line=>{if(!line.trim())return;const cells=[];let cur='',inQ=false;for(let i=0;i<line.length;i++){const ch=line[i];if(inQ){if(ch==='"'){if(line[i+1]==='"'){cur+='"';i++;}else inQ=false;}else cur+=ch;}else if(ch==='"')inQ=true;else if(ch===','){cells.push(cur);cur='';}else cur+=ch;}cells.push(cur);out.push(cells.map(x=>x.trim()));});return out;}
@@ -2089,72 +2280,116 @@ newBills.push({id:uid(),ledgerId:ensureLedger(cur,ledgerName||(cur==='HKD'?'港�
 if(!newBills.length){showToast('没有可导入的新账单（可能已存在）');return;}
 DB.bills=(DB.bills||[]).concat(newBills);save();render();showToast('已导入 '+newBills.length+' 笔账单');
 }
+/* ========== 记账页：月/年视图（改版） ========== */
+function moneyShift(n){if(state.moneyView==='year'){moneyMonthShift(n*12);}else moneyMonthShift(n);}
+function moneyViewTab(k){state.moneyView=k==='year'?'year':'month';render();saveUI();}
+function moneyPickDay(d){state.moneyDay=d;render();saveUI();}
+function moneyPickMonth(ym){state.moneyYM=ym;state.moneyDay=ym===moneyYMNow()?todayStr():(state.moneyDay||todayStr());render();saveUI();}
+function moneyStatsYear(yr,lid){const bs=(DB.bills||[]).filter(b=>b.ledgerId===lid&&String(b.date||'').slice(0,4)===yr);let inc=0,exp=0;bs.forEach(b=>{if(b.type==='income')inc+=Number(b.amount)||0;else exp+=Number(b.amount)||0;});return {inc:inc,exp:exp,balance:inc-exp};}
+function moneyDailyExp(ym,lid){const dim=new Date(+ym.slice(0,4),+ym.slice(5,7),0).getDate();const a=new Array(dim).fill(0);(DB.bills||[]).forEach(b=>{if(b.ledgerId===lid&&b.type==='expense'&&String(b.date||'').slice(0,7)===ym){const d=+b.date.slice(8,10);if(d>=1&&d<=dim)a[d-1]+=Number(b.amount)||0;}});return a;}
+function moneyMonthlyExp(yr,lid){const a=new Array(12).fill(0);(DB.bills||[]).forEach(b=>{if(b.ledgerId===lid&&b.type==='expense'&&String(b.date||'').slice(0,4)===yr){const m=+b.date.slice(5,7);if(m>=1&&m<=12)a[m-1]+=Number(b.amount)||0;}});return a;}
+function moneyCatRank(bills){const o={};(bills||[]).forEach(b=>{if(b.type==='expense')o[b.category]=(o[b.category]||0)+(Number(b.amount)||0);});return Object.entries(o).sort((a,b)=>b[1]-a[1]);}
+function moneyBillRowHtml(b,sym){const plus=b.type==='income';return '<div class="m-bill2" onclick="App.billModal(\''+b.id+'\')"><span class="dot" style="background:'+moneyCatFill(b.category)+'"></span><div style="flex:1;min-width:0"><b>'+esc(b.category)+'</b>'+(b.note?'<small style="display:block;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(b.note)+'</small>':'')+'</div><div style="text-align:right;flex:none"><b style="color:'+(plus?'var(--green)':'var(--ink)')+'">'+(plus?'+':'-')+sym+fmtMoney(b.amount)+'</b><small style="display:block;color:var(--muted)">'+b.date.slice(5)+'</small></div></div>';}
+function moneyBillListHtml(bills,sym){return bills.length?bills.map(b=>moneyBillRowHtml(b,sym)).join(''):'<div class="empty" style="padding:10px">暂无账单</div>';}
+function moneyDonutHtml(cats){const R=46,C=2*Math.PI*R;const total=cats.reduce((a,x)=>a+x[1],0);let acc=0,segs='';if(total>0){cats.forEach(x=>{const frac=x[1]/total;const dd=Math.max(0.8,frac*C-1.2);const off=-(acc*C);acc+=frac;segs+='<circle cx="60" cy="60" r="'+R+'" fill="none" stroke="'+moneyCatFill(x[0])+'" stroke-width="17" stroke-dasharray="'+dd.toFixed(1)+' '+(C-dd).toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 60 60)"/>';});}
+const lg=cats.map(x=>'<div class="m-lg2"><span class="dot" style="background:'+moneyCatFill(x[0])+'"></span><span class="t">'+esc(x[0])+'</span><b>¥'+fmtMoney(x[1])+'</b></div>').join('');
+return '<div class="m-donut2"><svg viewBox="0 0 120 120" style="width:112px;height:112px;flex:none">'+segs+'<text x="60" y="58" text-anchor="middle" class="donut-n">'+fmtMoney(total)+'</text><text x="60" y="74" text-anchor="middle" class="donut-l">支出</text></svg><div class="lg-grid2">'+lg+'</div></div>';}
+function moneyLineChart(vals,labels,cid){const mx=Math.max(1,Math.max.apply(null,vals));const n=vals.length;const W=600,H=150,pl=30,pr=8,pt=14,pb=24;const x=i=>pl+(n>1?i*(W-pl-pr)/(n-1):0);const y=v=>H-pb-(v/mx)*(H-pt-pb);let pts=[],dots='',tgts='',xls='';const step=Math.max(1,(W-pl-pr)/Math.max(1,n));for(let i=0;i<n;i++){pts.push(x(i).toFixed(1)+','+y(vals[i]).toFixed(1));dots+='<circle cx="'+x(i).toFixed(1)+'" cy="'+y(vals[i]).toFixed(1)+'" r="2.8" fill="#4C9A6A"/>';tgts+='<rect x="'+(x(i)-step/2).toFixed(1)+'" y="0" width="'+step.toFixed(1)+'" height="'+H+'" fill="transparent"/>';}const area=pl+','+(H-pb)+' '+pts.join(' ')+' '+(W-pr)+','+(H-pb);for(let i=0;i<n;i++){if(i===0||i===n-1||i%2===0)xls+='<text x="'+x(i).toFixed(1)+'" y="'+(H-6)+'" text-anchor="middle" font-size="8" fill="#9aa0a6">'+esc(labels[i])+'</text>';}
+return '<div class="m-chart"><div class="tip" id="tip'+cid+'"></div><svg id="lc'+cid+'" viewBox="0 0 '+W+' '+H+'" style="width:100%;height:auto" data-vals="'+vals.join(',')+'" data-labels="'+labels.map(x=>String(x).replace(/\|/g,'/')).join('|')+'" onmousemove="App.moneyTip(event,this,\''+cid+'\')" onmouseleave="App.moneyTipHide()">'+
+'<defs><linearGradient id="lg'+cid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4C9A6A" stop-opacity="0.22"/><stop offset="1" stop-color="#4C9A6A" stop-opacity="0"/></linearGradient></defs>'+
+'<polygon points="'+area+'" fill="url(#lg'+cid+')"/><polyline points="'+pts.join(' ')+'" fill="none" stroke="#4C9A6A" stroke-width="2"/>'+dots+tgts+xls+'</svg></div>';}
+function moneyTip(ev,svg,cid){const tip=document.getElementById('tip'+cid);if(!tip)return;const vals=String(svg.getAttribute('data-vals')||'').split(',').map(Number);const labels=String(svg.getAttribute('data-labels')||'').split('|');const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)/r.width*600;const n=vals.length;const den=n>1?n-1:1;let best=0,bd=1e9;for(let i=0;i<n;i++){const xi=30+i*(592-30)/den;const d=Math.abs(xi-px);if(d<bd){bd=d;best=i;}}tip.style.display='block';tip.style.left=Math.max(0,(30+best*(592-30)/den)/600*r.width-30)+'px';tip.style.top='18px';tip.textContent=(labels[best]||'')+' · 花费 ¥'+fmtMoney(vals[best]||0);}
+function moneyTipHide(){const ts=document.querySelectorAll('.m-chart .tip');for(let i=0;i<ts.length;i++)ts[i].style.display='none';}
+function moneyRankHtml(rank){const mx=rank.length?rank[0][1]:1;return rank.map(x=>'<div class="rk2"><span class="n">'+esc(x[0])+'</span><div class="track"><div class="fill" style="width:'+Math.round(x[1]/mx*100)+'%;background:'+moneyCatFill(x[0])+'"></div></div><span class="v">¥'+fmtMoney(x[1])+'</span></div>').join('');}
+function moneyCalHtml(ym,selDay,lid){const y=+ym.slice(0,4),m=+ym.slice(5,7);const first=new Date(y,m-1,1);const start=new Date(y,m-1,1-first.getDay());const today=todayStr();const wd=['日','一','二','三','四','五','六'];let h='<div class="m-cal">';for(let k=0;k<7;k++)h+='<div class="wd">'+wd[k]+'</div>';const daily=new Set((DB.bills||[]).filter(b=>b.ledgerId===lid&&b.type==='expense'&&String(b.date||'').slice(0,7)===ym).map(b=>b.date));for(let i=0;i<42;i++){const dd=new Date(start);dd.setDate(start.getDate()+i);const ds=fmt(dd);let cls='d';if(dd.getMonth()!==m-1)cls+=' other';if(ds===today)cls+=' today';if(daily.has(ds))cls+=' has';if(ds===selDay)cls+=' sel';h+='<div class="'+cls+'" onclick="App.moneyPickDay(\''+ds+'\')">'+dd.getDate()+'</div>';}return h+'</div>';}
 function viewMoney(){
 const ym=moneyYMCur();
+const yr=ym.slice(0,4);
+const isYear=state.moneyView==='year';
 const ld=curLedger();
 const sym=curSym(ld.currency);
-const st=moneyStats(ym,ld.id);
-const bd=budgetFor(ld.id);
 const filter=state.moneyFilter||'all';
-const bills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&String(b.date||'').slice(0,7)===ym).filter(b=>filter==='all'||(filter==='income'?b.type==='income':b.type==='expense')).sort((a,b)=>b.date.localeCompare(a.date)||((b.createdAt||0)-(a.createdAt||0)));
-const now=new Date();
-const dom=now.getDate();
-const dim=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();
-const overTotal=bd.monthly>0&&st.exp>bd.monthly;
-const bpct=bd.monthly>0?clamp(Math.round(st.exp/bd.monthly*100),0,999):0;
-const dPlan=bd.monthly>0?(bd.monthly/dim):0;
-const dAct=dom?((st.exp)/dom):0;
-const cats=allExpCats();
-const catRows=cats.concat(Object.keys(st.byCat).filter(k=>!cats.includes(k))).map(c=>({cat:c,amt:st.byCat[c]||0})).filter(x=>x.amt>0).sort((a,b)=>b.amt-a.amt);
-const catTotal=catRows.reduce((a,x)=>a+x.amt,0);
-let bHtml='<div class="card m-bg" style="margin-top:10px"><h4>'+icon('target')+'预算 · '+esc(ld.name)+'</h4>'+
-'<label style="font-size:.8rem;color:var(--muted)">本月总预算（'+sym+'）</label>'+
-'<div class="m-total"><input type="number" id="mb-total" min="0" step="0.01" value="'+(bd.monthly?fmtMoney(bd.monthly):'')+'" onchange="App.moneyBudget(\'total\',\'\',this.value)" placeholder="'+sym+'0.00"><button class="btn sm" onclick="App.moneyCatManage()">'+icon('edit')+'分类</button></div>';
-if(bd.monthly>0){
-bHtml+='<div style="margin-top:8px"><div class="bar" style="height:10px"><i style="width:'+Math.min(100,bpct)+'%;background:'+(overTotal?'var(--danger)':'linear-gradient(90deg,var(--green),var(--blue))')+'"></i></div>'+
-'<div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--muted);margin-top:4px"><span>已用 '+sym+fmtMoney(st.exp)+' / '+sym+fmtMoney(bd.monthly)+'（'+bpct+'%）</span><span class="'+(overTotal?'od':'')+'">'+(overTotal?'已超支 '+sym+fmtMoney(st.exp-bd.monthly):'剩余 '+sym+fmtMoney(Math.max(0,bd.monthly-st.exp)))+'</span></div>'+
-'<div style="font-size:.75rem;color:'+(dAct>dPlan?'var(--danger)':'var(--muted)')+';margin-top:2px">日均 '+sym+fmtMoney(dAct)+' / 预算日均 '+sym+fmtMoney(dPlan)+'</div></div>';
-}
-bHtml+='<div class="m-bgcats">'+cats.map(c=>{
-const cb=bd.categories[c]||0;const ce=st.byCat[c]||0;const o=cb>0&&ce>cb;
-return '<div><div style="font-size:.72rem;color:var(--muted);display:flex;justify-content:space-between"><span style="font-weight:600">'+c+'</span>'+(cb>0?'<span class="'+(o?'od':'')+'" style="'+(o?'color:var(--danger);font-weight:700':'')+'">'+sym+fmtMoney(ce)+'/'+sym+fmtMoney(cb)+'</span>':'')+'</div><input type="number" min="0" step="0.01" value="'+(cb?fmtMoney(cb):'')+'" placeholder="预算" onchange="App.moneyBudget(\'cat\',\''+c+'\',this.value)" style="font-size:.78rem;padding:5px 8px"></div>';
-}).join('')+'</div>'+
-'</div>';
-let catHtml='<div class="card" style="margin-top:10px"><h4>'+icon('chart')+'支出分类</h4>';
-if(catRows.length){
-const R=46,C=2*Math.PI*R;
-let acc=0;
-const segs=catRows.map(x=>{const frac=x.amt/catTotal;const dd=Math.max(0.8,frac*C-1.2);const off=-(acc*C);acc+=frac;return '<circle cx="60" cy="60" r="'+R+'" fill="none" stroke="'+catColor(x.cat)+'" stroke-width="17" stroke-dasharray="'+dd+' '+(C-dd)+'" stroke-dashoffset="'+off+'" transform="rotate(-90 60 60)"/>';}).join('');
-catHtml+='<div class="m-donut"><svg viewBox="0 0 120 120" class="donut">'+segs+'<text x="60" y="55" text-anchor="middle" class="donut-n">'+sym+fmtMoney(catTotal)+'</text><text x="60" y="70" text-anchor="middle" class="donut-l">本月支出</text></svg>'+
-'<div class="m-legend">'+catRows.map(x=>'<div class="m-lg"><span class="dot" style="background:'+catColor(x.cat)+'"></span><span class="t">'+esc(x.cat)+'</span><b>'+sym+fmtMoney(x.amt)+'</b><small>'+Math.round(x.amt/catTotal*100)+'%</small></div>').join('')+'</div></div>';
-}else{
-catHtml+='<div class="empty" style="padding:10px">本月暂无支出</div>';
-}
-catHtml+='</div>';
-let listHtml='<div class="card" style="margin-top:10px"><div style="display:flex;align-items:center;gap:8px;margin-bottom:6px"><h4 style="margin:0;flex:1">'+icon('box')+'账单（'+bills.length+'）</h4>'+
-'<div class="cal-tabs">'+[['expense','支出'],['income','收入'],['all','全部']].map(f=>'<button class="'+(filter===f[0]?'on':'')+'" onclick="App.moneyFilter(\''+f[0]+'\')">'+f[1]+'</button>').join('')+'</div></div>'+
-(bills.length?bills.map(b=>'<div class="m-bill" onclick="App.billModal(\''+b.id+'\')"><span class="dot" style="background:'+moneyCatFill(b.category)+'"></span><div style="flex:1;min-width:0"><b>'+esc(b.category)+'</b>'+(b.note?'<small style="display:block;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(b.note)+'</small>':'')+'</div><div style="text-align:right;flex:none"><b style="color:'+(b.type==='income'?'var(--green)':'var(--ink)')+'">'+(b.type==='income'?'+':'-')+sym+fmtMoney(b.amount)+'</b><small style="display:block;color:var(--muted)">'+b.date+'</small></div></div>').join(''):'<div class="empty">本月还没有账单，点「记一笔」开始吧</div>')+'</div>';
+const selDay=state.moneyDay||todayStr();
+const st=isYear?moneyStatsYear(yr,ld.id):moneyStats(ym,ld.id);
+const incAmt=st.inc,expAmt=st.exp,bal=st.balance;
+const incW=incAmt||expAmt?Math.round(incAmt/Math.max(1,incAmt,expAmt)*100):0;
+const expW=incAmt||expAmt?Math.round(expAmt/Math.max(1,incAmt,expAmt)*100):0;
+/* 表头 */
+const tabBtns='<div class="m-tabs"><button class="'+(isYear?'':'on')+'" onclick="App.moneyViewTab(\'month\')">月</button><button class="'+(isYear?'on':'')+'" onclick="App.moneyViewTab(\'year\')">年</button></div>';
 const ldgOpts=(DB.ledgers||[]).map(l=>'<option value="'+l.id+'" '+(l.id===ld.id?'selected':'')+'>'+esc(l.name)+' '+curSym(l.currency)+'</option>').join('');
-return '<section class="card">'+
-'<div class="m-top"><h2>'+icon('money')+'记账</h2></div>'+
-'<div class="m-mid"><div class="m-left">'+
-'<div class="m-ldgrow"><select id="m-ldg" class="m-ldg" onchange="App.moneyLedger(this.value)">'+ldgOpts+'</select>'+
-'<button class="btn sm mg" title="管理账本" onclick="App.ledgerManage()">'+icon('sliders')+'</button></div>'+
-'<div class="m-tools"><div class="m-nav">'+
-'<button class="btn sm" onclick="App.moneyMonthShift(-1)">'+icon('arrow-l')+'</button>'+
-'<b>'+ym+'</b>'+
-'<button class="btn sm" onclick="App.moneyMonthShift(1)">'+icon('arrow-r')+'</button>'+
-'<button class="btn sm" onclick="App.moneyToday()">本月</button>'+
-'</div></div></div>'+
-'<button class="btn sm primary m-add" onclick="App.billModal(\'\')">'+icon('plus')+'记一笔</button></div>'+
-'<div class="m-sum">'+
-'<div><span>本月支出</span><b style="color:var(--danger)">'+sym+fmtMoney(st.exp)+'</b></div>'+
-'<div><span>本月收入</span><b style="color:var(--green)">'+sym+fmtMoney(st.inc)+'</b></div>'+
-'<div><span>本月总预算</span><b class="'+(bd.monthly?'':'m-uns')+'">'+(bd.monthly?sym+fmtMoney(bd.monthly):'未设置')+'</b></div>'+
-'<div><span>结余</span><b style="color:'+(st.balance>=0?'var(--green)':'var(--danger)')+'">'+sym+fmtMoney(st.balance)+'</b></div>'+
-'</div>'+listHtml+bHtml+catHtml+'</section>'+moneyIoCard();
+const navBtn='<button class="btn sm" onclick="App.moneyShift(-1)">'+icon('arrow-l')+'</button><b style="font-size:.85rem">'+(isYear?yr:ym)+'</b><button class="btn sm" onclick="App.moneyShift(1)">'+icon('arrow-r')+'</button><button class="btn sm" onclick="App.moneyToday()">'+(isYear?'今年':'本月')+'</button>';
+const head='<section class="card"><div class="m-top"><h2>'+icon('money')+'记账</h2>'+tabBtns+'<div class="hd-ctls"><select class="m-ldg" onchange="App.moneyLedger(this.value)">'+ldgOpts+'</select>'+navBtn+'<button class="btn sm primary m-add" onclick="App.billModal(\'\')">'+icon('plus')+'记一笔</button></div></div></section>';
+/* 结余卡 */
+const balHtml='<section class="card"><div class="m-bal"><div class="b1"><div class="lbl">'+(isYear?'本年结余':'本月结余')+'</div><div class="num '+(bal>=0?'g':'r')+'">'+(bal>=0?'+':'-')+sym+fmtMoney(Math.abs(bal))+'</div></div><div style="flex:1">'+
+'<div class="bar-row"><span class="bl">收入</span><div class="bar-track"><div class="bar-fill" style="width:'+incW+'%;background:var(--green)"></div></div><span class="bv">'+sym+fmtMoney(incAmt)+'</span></div>'+
+'<div class="bar-row"><span class="bl">支出</span><div class="bar-track"><div class="bar-fill" style="width:'+expW+'%;background:var(--danger)"></div></div><span class="bv">'+sym+fmtMoney(expAmt)+'</span></div></div></div></section>';
+/* 月视图：左月历 + 右日账单 */
+let mid='';
+if(!isYear){
+const dayBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&b.date===selDay&&(filter==='all'||(filter==='income'?b.type==='income':b.type==='expense'))).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
+mid='<section class="card"><div class="m-two mrow">'+
+'<div class="left"><div class="panel-h">'+esc(ym.slice(5))+'月</div>'+moneyCalHtml(ym,selDay,ld.id)+'</div>'+
+'<div class="right"><div class="panel-h"><span>'+esc(parseInt(selDay.slice(5,7),10)+'月'+parseInt(selDay.slice(8,10),10))+'日</span><button class="btn sm primary" style="margin-left:auto" onclick="App.billModal(\'\',\''+selDay+'\')">'+icon('plus')+'记一笔</button></div>'+moneyBillListHtml(dayBills,sym)+'</div>'+
+'</div></section>';
+}else{
+/* 年视图：左年支出 + 右月账单 */
+const months=moneyMonthlyExp(yr,ld.id);
+const mx=Math.max(1,Math.max.apply(null,months));
+let mbars='';for(let i=0;i<12;i++){const v=months[i];const hgt=v?Math.round(v/mx*100):2;const isCur=(ym.slice(5,7)==String(i+1).padStart(2,'0'));mbars+='<div class="mb'+(isCur?' sel':'')+'" onclick="App.moneyPickMonth(\''+yr+'-'+String(i+1).padStart(2,'0')+'\')"><div class="bar" style="height:'+hgt+'px;background:'+(v?(isCur?'var(--green)':'var(--green)'):'#dfe5da')+'"></div><span class="ml">'+(i+1)+'月</span></div>';}
+const monthBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&String(b.date||'').slice(0,7)===ym&&(filter==='all'||(filter==='income'?b.type==='income':b.type==='expense'))).sort((a,b)=>b.date.localeCompare(a.date)||((b.createdAt||0)-(a.createdAt||0)));
+mid='<section class="card"><div class="m-two">'+
+'<div class="left ycell"><div class="panel-h">'+yr+'</div><div class="m-monthbars">'+mbars+'</div></div>'+
+'<div class="right"><div class="panel-h"><span>'+esc(parseInt(ym.slice(5),10))+'月</span><button class="btn sm primary" style="margin-left:auto" onclick="App.billModal(\'\',\''+ym+'-01\')">'+icon('plus')+'记一笔</button></div>'+moneyBillListHtml(monthBills,sym)+'</div>'+
+'</div></section>';
 }
-function billModal(id){
+/* 支出分类 */
+const scopeBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&(isYear?String(b.date||'').slice(0,4)===yr:String(b.date||'').slice(0,7)===ym));
+const cats=moneyCatRank(scopeBills);
+const catTotal=cats.reduce((a,x)=>a+x[1],0);
+let catHtml='<section class="card"><b>'+(isYear?yr+' 支出分类':esc(ym.slice(5))+'月 支出分类')+'</b>';
+if(catTotal>0){
+catHtml+=moneyDonutHtml(cats);
+const daily=isYear?moneyMonthlyExp(yr,ld.id):moneyDailyExp(ym,ld.id);
+const labels=isYear?['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']:Array.from({length:daily.length},(_,i)=>String(i+1));
+const nonZero=daily.filter(v=>v>0);
+const maxDay=nonZero.length?Math.max.apply(null,nonZero):0;
+const avg=nonZero.length?catTotal/nonZero.length/100:0;
+const cnt=scopeBills.filter(b=>b.type==='expense').length;
+catHtml+='<div class="legend" style="margin-top:8px"><span><i style="background:var(--green)"></i>'+(isYear?'月度支出（元）':'每日支出（元）')+'</span></div>'+moneyLineChart(daily,labels,isYear?'y':'m')+
+'<div class="stat3"><div><small>'+((isYear?'单月最高':'单日最高')+'</small><b>'+sym+fmtMoney(maxDay))+'</b></div><div><small>'+((isYear?'平均每月':'平均每日')+'</small><b>'+sym+avg.toFixed(1))+'</b></div><div><small>累计支出</small><b>'+cnt+' 笔</b></div></div>';
+}else{catHtml+='<div class="empty" style="padding:10px">本月暂无支出</div>';}
+catHtml+='<div class="rank2"><div style="font-size:.85rem;font-weight:600;margin:8px 0 2px">支出类目排行</div>'+(cats.length?moneyRankHtml(cats):'<div class="empty" style="padding:10px">暂无数据</div>')+'</div></section>';
+/* 预算（仅月视图，紧凑版） */
+let bHtml='';
+if(!isYear){
+const bd=budgetFor(ld.id);
+const overTotal=bd.monthly>0&&st.exp>bd.monthly;const bpct=bd.monthly>0?clamp(Math.round(st.exp/bd.monthly*100),0,999):0;
+const overCats=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&b.type==='expense'&&String(b.date||'').slice(0,7)===ym);
+const catUsed={};overCats.forEach(b=>{catUsed[b.category]=(catUsed[b.category]||0)+(Number(b.amount)||0);});
+const overList=Object.keys(bd.categories||{}).filter(c=>bd.categories[c]>0&&(catUsed[c]||0)>bd.categories[c]).sort((a,b)=>(catUsed[b]||0)-(catUsed[a]||0));
+const nBud=Object.keys(bd.categories||{}).filter(c=>bd.categories[c]>0).length;
+bHtml='<section class="card" style="margin-top:0"><div class="bud3-h"><b>'+icon('target')+'预算'+'</b><button class="btn sm" onclick="App.moneyBudgetEdit()">'+icon('edit')+'编辑</button></div>';
+if(bd.monthly>0){
+const fillW=Math.min(100,bpct);const fillC=overTotal?'var(--danger)':(bpct>=80?'var(--warn)':'var(--green)');
+bHtml+='<div class="bud3-tot"><span>总预算</span><b>'+sym+fmtMoney(bd.monthly)+'</b><span>/月</span><span class="sp"></span>'+(nBud?'<span>分类预算已设 '+nBud+' 项</span>':'')+'</div>'+
+'<div class="bud3-bar"><i class="fill" style="left:0;width:'+fillW+'%;background:'+fillC+'"></i>'+(overTotal?'<i class="over" style="left:'+fillW+'%;width:'+Math.max(2,Math.min(40,bpct-100))+'%"></i>':'')+'</div>'+
+'<div class="bud3-line"><span>已用 '+sym+fmtMoney(st.exp)+' / '+sym+fmtMoney(bd.monthly)+'（'+bpct+'%）</span><span class="'+(overTotal?'od':'')+'">'+(overTotal?'已超支 '+sym+fmtMoney(st.exp-bd.monthly):'剩余 '+sym+fmtMoney(Math.max(0,bd.monthly-st.exp)))+'</span></div>'+
+(overList.length?'<div class="bud3-cat">其中 '+overList.length+' 个分类超支（'+overList.slice(0,3).join('、')+(overList.length>3?' 等':'')+'）</div>':'')+
+'<div class="bud3-legend"><span><i style="background:var(--green)"></i>80% 内</span><span><i style="background:var(--warn)"></i>80%~100%</span><span><i style="background:var(--danger)"></i>已超支</span></div>';
+}else{
+bHtml+='<div class="bud3-tot"><span>未设置预算</span><span class="sp"></span></div><div class="bud3-legend"><span><i style="background:var(--green)"></i>80% 内</span><span><i style="background:var(--warn)"></i>80%~100%</span><span><i style="background:var(--danger)"></i>已超支</span></div>';
+}
+bHtml+='</section>';
+}
+/* 折叠账单列表（底部） */
+const fullBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&(isYear?String(b.date||'').slice(0,4)===yr:String(b.date||'').slice(0,7)===ym)&&(filter==='all'||(filter==='income'?b.type==='income':b.type==='expense'))).sort((a,b)=>b.date.localeCompare(a.date)||((b.createdAt||0)-(a.createdAt||0)));
+const fullTitle=isYear?'本年账单':'本月账单';
+const fullSub=(isYear?yr:ym)+' · '+fullBills.length+' 笔';
+const fltTabs='<div class="m-tabs" style="margin-left:auto">'+[['expense','支出'],['income','收入'],['all','全部']].map(f=>'<button class="'+(filter===f[0]?'on':'')+'" onclick="App.moneyFilter(\''+f[0]+'\')">'+f[1]+'</button>').join('')+'</div>';
+const collapsible='<section class="card"><div class="m-collapse" onclick="this.classList.toggle(\'open\');var cb=this.nextElementSibling;cb.style.display=cb.style.display===\'none\'?\'\':\'none\'"><span class="arr">▸</span>'+fullTitle+' <small>（'+fullSub+'）</small>'+fltTabs+'</div><div class="cb" style="display:none">'+moneyBillListHtml(fullBills,sym)+'</div></section>';
+return head+balHtml+bHtml+mid+catHtml+collapsible+moneyIoCard();
+}
+function billModal(id,preDate){
 const b=id?DB.bills.find(x=>x.id===id):null;
 const ld=curLedger();
 const sym=curSym(ld.currency);
@@ -2168,7 +2403,7 @@ openModal('<h3>'+icon('money')+(b?'编辑账单':'记一笔')+' · '+esc(ld.name
 '</div>'+
 '<label>金额（'+sym+'）</label><input type="number" id="bm-amount" min="0.01" step="0.01" value="'+(b?fmtMoney(b.amount):'')+'" placeholder="0.00">'+
 '<label>分类</label><select id="bm-cat">'+cats.map(c=>'<option '+(b&&b.category===c?'selected':'')+'>'+c+'</option>').join('')+'</select>'+
-'<label>日期</label><input type="date" id="bm-date" value="'+((b&&b.date)||todayStr())+'">'+
+'<label>日期</label><input type="date" id="bm-date" value="'+((b&&b.date)||preDate||todayStr())+'">'+
 '<label>备注</label><input id="bm-note" maxlength="40" placeholder="选填" value="'+esc(b?b.note:'')+'">'+
 '<div class="md-actions"><button class="btn" onclick="App.closeModal()">取消</button>'+(b?'<button class="btn danger" onclick="App.moneyDel(\''+b.id+'\')">删除</button>':'')+'<button class="btn primary" onclick="App.moneySave()">'+icon('check')+'保存</button></div>');
 }
@@ -2191,6 +2426,16 @@ if(eid){const b=DB.bills.find(x=>x.id===eid);if(b){Object.assign(b,{type:type,am
 else{DB.bills.push({id:uid(),ledgerId:curLedger().id,type:type,amount:amt,category:cat,note:note,date:date,createdAt:Date.now()});}
 window.__bmId='';
 save();closeModal();render();showToast(eid?'已更新':'已记一笔');
+if(type==='expense'){
+const ld=curLedger();const sym=curSym(ld.currency);const bd=budgetFor(ld.id);
+const m=date.slice(0,7);
+const mBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&b.type==='expense'&&String(b.date||'').slice(0,7)===m);
+const mExp=mBills.reduce((s,b)=>s+(Number(b.amount)||0),0);
+const cExp=mBills.filter(b=>b.category===cat).reduce((s,b)=>s+(Number(b.amount)||0),0);
+const cb=bd.categories[cat]||0;
+if(cb>0&&cExp>cb)showToast('分类「'+cat+'」已超支 '+sym+fmtMoney(cExp-cb));
+else if(bd.monthly>0&&mExp>bd.monthly)showToast((m===moneyYMCur()?'本月':'该月')+'总预算已超支 '+sym+fmtMoney(mExp-bd.monthly));
+}
 }
 function moneyDel(id){
 confirmModal('删除账单','确定删除这笔账单？该操作不可撤销。','删除').then(ok=>{if(!ok)return;tombstone('bills',id);DB.bills=DB.bills.filter(x=>x.id!==id);save();closeModal();render();showToast('已删除');});
@@ -2202,6 +2447,24 @@ const v=Math.max(0,Math.round((Number(val)||0)*100));
 if(kind==='total')bd.monthly=v;
 else bd.categories[cat]=v;
 save();setTimeout(()=>render(),0);showToast('预算已保存');
+}
+function moneyBudgetEdit(){
+const ld=curLedger();
+const bd=budgetFor(ld.id);
+const sym=curSym(ld.currency);
+openModal('<h3>'+icon('edit')+'编辑预算</h3>'+
+'<label>总预算（'+sym+'/月）</label><input type="number" id="mbe-total" min="0" step="0.01" value="'+(bd.monthly?fmtMoney(bd.monthly):'')+'" placeholder="0.00">'+
+'<label style="margin-top:10px">分类预算（留空=不限）</label>'+
+'<div class="m-bgcats m-modal" style="max-height:40vh;overflow:auto">'+allExpCats().map(c=>'<div class="m-cc"><span class="dot" style="background:'+moneyCatFill(c)+'"></span><span class="nm">'+esc(c)+'</span>'+
+'<input type="number" class="mbe-cat" data-cat="'+c+'" min="0" step="0.01" value="'+(bd.categories[c]?fmtMoney(bd.categories[c]):'')+'" placeholder="不限"></div>').join('')+'</div>'+
+'<div class="md-actions"><button class="btn" onclick="App.moneyCatManage()">'+icon('edit')+'分类管理</button><button class="btn" onclick="App.closeModal()">取消</button><button class="btn primary" onclick="App.moneyBudgetSave()">'+icon('check')+'保存</button></div>');
+}
+function moneyBudgetSave(){
+const ld=curLedger();
+const bd=budgetFor(ld.id);
+bd.monthly=Math.max(0,Math.round((Number(($('#mbe-total')||{}).value)||0)*100));
+document.querySelectorAll('.mbe-cat').forEach(el=>{bd.categories[el.getAttribute('data-cat')]=Math.max(0,Math.round((Number(el.value)||0)*100));});
+save();closeModal();render();showToast('预算已保存');
 }
 function moneyCatManage(){
 openModal('<h3>'+icon('edit')+'编辑分类</h3>'+
@@ -2523,7 +2786,7 @@ moneyLedger(k){state.moneyLedger=k;render();},
 moneyMonthShift(n){const p=moneyYMCur().split('-');const d=new Date(Number(p[0]),Number(p[1])-1+n,1);state.moneyYM=d.getFullYear()+'-'+pad(d.getMonth()+1);render();},
 moneyToday(){state.moneyYM='';render();},
 moneyFilter(k){state.moneyFilter=k;render();},
-moneyBudget:moneyBudget,billModal:billModal,moneySave:moneySave,moneyDel:moneyDel,bmType:bmType,moneyCatManage:moneyCatManage,moneyCatAdd:moneyCatAdd,moneyCatEdit:moneyCatEdit,moneyCatRename:moneyCatRename,moneyCatDel:moneyCatDel,moneyExportCsv:moneyExportCsv,moneyExportExcel:moneyExportExcel,moneyImportFile:moneyImportFile,moneyImportCsv:moneyImportCsv,
+moneyBudget:moneyBudget,moneyBudgetEdit:moneyBudgetEdit,moneyBudgetSave:moneyBudgetSave,billModal:billModal,moneySave:moneySave,moneyDel:moneyDel,bmType:bmType,moneyCatManage:moneyCatManage,moneyCatAdd:moneyCatAdd,moneyCatEdit:moneyCatEdit,moneyCatRename:moneyCatRename,moneyCatDel:moneyCatDel,moneyExportCsv:moneyExportCsv,moneyExportExcel:moneyExportExcel,moneyImportFile:moneyImportFile,moneyImportCsv:moneyImportCsv,moneyExportModal:moneyExportModal,moneyDoExport:moneyDoExport,moneyShift:moneyShift,moneyViewTab:moneyViewTab,moneyPickDay:moneyPickDay,moneyPickMonth:moneyPickMonth,moneyTip:moneyTip,moneyTipHide:moneyTipHide,
 memoToggle:memoToggle,memoSub:memoSub,memoModal:memoModal,memoSave:memoSave,memoDel:memoDel,memoDone:memoDone,memoEventDel:memoEventDel,
 closetModal:closetModal,closetSave:closetSave,closetDel:closetDel,closetWear:closetWear,closetUnwear:closetUnwear,closetArchive:closetArchive,
 ledgerModal:ledgerModal,ledgerManage:ledgerManage,ledgerSave:ledgerSave,ledgerDel:ledgerDel,ledgerSetDefault:ledgerSetDefault,
