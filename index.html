@@ -445,8 +445,7 @@ textarea{resize:vertical}
 .bud3-legend span{display:inline-flex;align-items:center;gap:4px}
 .bud3-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
 .m-cc input{width:88px;text-align:right;border:1px solid var(--line);border-radius:6px;padding:3px 6px;font-size:.78rem;flex:none}
-/* 手机端月视图：日历压缩、右侧账单变宽（仅 mrow 月视图，年视图不变） */
-@media(max-width:640px){.m-two.mrow{flex-direction:row;gap:10px}.m-two.mrow .left{flex:0 0 200px;width:auto}.m-two.mrow .right{flex:1;min-width:0}.m-two.mrow .m-cal{gap:1px}.m-two.mrow .m-cal .wd{font-size:.56rem;padding:1px 0}.m-two.mrow .m-cal .d{font-size:.66rem;padding:2px 0}.m-two.mrow .panel-h{font-size:.85rem}}
+
 </style>
 </head>
 <body>
@@ -2118,7 +2117,7 @@ function moneyIoCard(){return '<section class="card" style="margin-top:10px"><h2
 '<button class="btn" onclick="App.moneyExportModal(\'csv\')">'+icon('download')+'导出 CSV</button>'+
 '<label class="btn" style="display:inline-flex">'+icon('upload')+'导入 CSV<input type="file" accept=".csv,text/csv" style="display:none" onchange="App.moneyImportFile(event)"></label>'+
 '</div>'+
-'<p style="font-size:.75rem;color:var(--muted);margin-top:6px">导出前可选择账本与日期范围；Excel 中不同分类的格子按分类着色。导入支持本应用导出的 CSV 与喵喵记账 CSV，重复账单自动跳过。</p>'+
+
 '</section>';}
 function dlBlob(name,blob){try{const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);showToast('已导出 '+name);}catch(e){showToast('下载被拦截，请换浏览器重试');}}
 function moneyExportRows(o){o=o||{};return (DB.bills||[]).filter(b=>{if(o.ledgerId&&b.ledgerId!==o.ledgerId)return false;if(o.from&&b.date<o.from)return false;if(o.to&&b.date>o.to)return false;return true;}).sort((a,b)=>a.date.localeCompare(b.date)||((a.createdAt||0)-(b.createdAt||0))).map(b=>{const ld=(DB.ledgers||[]).find(l=>l.id===b.ledgerId)||{name:'',currency:''};return [b.date,b.type==='income'?'收入':'支出',b.category,(b.amount/100).toFixed(2),b.note||'',ld.name||'',ld.currency||''];});}
@@ -2327,7 +2326,7 @@ const balHtml='<section class="card"><div class="m-bal"><div class="b1"><div cla
 let mid='';
 if(!isYear){
 const dayBills=(DB.bills||[]).filter(b=>b.ledgerId===ld.id&&b.date===selDay&&(filter==='all'||(filter==='income'?b.type==='income':b.type==='expense'))).sort((a,b)=>(b.createdAt||0)-(a.createdAt||0));
-mid='<section class="card"><div class="m-two mrow">'+
+mid='<section class="card"><div class="m-two">'+
 '<div class="left"><div class="panel-h">'+esc(ym.slice(5))+'月</div>'+moneyCalHtml(ym,selDay,ld.id)+'</div>'+
 '<div class="right"><div class="panel-h"><span>'+esc(parseInt(selDay.slice(5,7),10)+'月'+parseInt(selDay.slice(8,10),10))+'日</span><button class="btn sm primary" style="margin-left:auto" onclick="App.billModal(\'\',\''+selDay+'\')">'+icon('plus')+'记一笔</button></div>'+moneyBillListHtml(dayBills,sym)+'</div>'+
 '</div></section>';
