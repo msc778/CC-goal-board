@@ -2280,7 +2280,7 @@ if(!newBills.length){showToast('没有可导入的新账单（可能已存在）
 DB.bills=(DB.bills||[]).concat(newBills);save();render();showToast('已导入 '+newBills.length+' 笔账单');
 }
 /* ========== 记账页：月/年视图（改版） ========== */
-function moneyShift(n){if(state.moneyView==='year'){moneyMonthShift(n*12);}else moneyMonthShift(n);}
+function moneyShift(n){if(state.moneyView==='year'){App.moneyMonthShift(n*12);}else App.moneyMonthShift(n);}
 function moneyViewTab(k){state.moneyView=k==='year'?'year':'month';render();saveUI();}
 function moneyPickDay(d){state.moneyDay=d;render();saveUI();}
 function moneyPickMonth(ym){state.moneyYM=ym;state.moneyDay=ym===moneyYMNow()?todayStr():(state.moneyDay||todayStr());render();saveUI();}
